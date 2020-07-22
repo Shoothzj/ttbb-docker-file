@@ -1,3 +1,4 @@
+# ttbb/nginx:nake
 FROM ttbb/base
 
 LABEL maintainer="shoothzj@gmail.com"
