@@ -1,0 +1,1 @@
+cp $1 /opt/sh/prometheus/prometheus.yml
