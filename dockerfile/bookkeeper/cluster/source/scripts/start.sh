@@ -18,7 +18,7 @@ echo "httpServerEnabled=true" >> /opt/sh/bookkeeper/conf/bk_server.conf
 
 echo "## Metadata Service settings Sh" >> /opt/sh/bookkeeper/conf/bk_server.conf
 
-echo "metadataServiceUri=zk+hierarchical://$ZK_ADDR/ledgers" >> /opt/sh/bookkeeper/conf/bk_server.conf
+echo "zkServers=$ZK_ADDR" >> /opt/sh/bookkeeper/conf/bk_server.conf
 
 cat /opt/sh/bookkeeper/conf/bk_server.conf
 

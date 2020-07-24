@@ -1,1 +1,0 @@
-https://computingforgeeks.com/how-to-install-postgresql-11-on-centos-rhel-8/

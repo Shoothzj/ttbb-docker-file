@@ -5,7 +5,7 @@ metadata:
   labels:
     app: bookkeeper
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: bookkeeper
@@ -18,6 +18,7 @@ spec:
       containers:
       - name: bookkeeper
         image: ttbb/bookkeeper:cluster
+        imagePullPolicy: Always
         resources:
           limits:
             memory: 2G
@@ -36,13 +37,5 @@ spec:
                 fieldPath: metadata.name
         - name: SERVICE_NAME
           value: "bookkeeper"
-      affinity:
-        podAntiAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-          - labelSelector:
-              matchExpressions:
-              - key: app
-                operator: In
-                values:
-                - bookkeeper
-            topologyKey: "kubernetes.io/hostname"
+        - name: ZK_ADDR
+          value: "zookeeper-0.zookeeper:2181,zookeeper-1.zookeeper:2181,zookeeper-2.zookeeper:2181"          

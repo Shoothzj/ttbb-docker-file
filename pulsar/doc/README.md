@@ -1,1 +1,0 @@
-curl -H "Content-Type: application/json" -X PUT http://127.0.0.1:7750/pulsar-manager/users/superuser -d '{"name": "admin", "password": "apachepulsar", "description": "test", "email": "username@test.org"}'
