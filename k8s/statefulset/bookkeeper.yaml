@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: bookkeeper
+  labels:
+    app: bookkeeper
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bookkeeper
+  serviceName: "bookkeeper"
+  template:
+    metadata:
+      labels:
+        app: bookkeeper
+    spec:
+      containers:
+      - name: bookkeeper
+        image: ttbb/bookkeeper:cluster
+        resources:
+          limits:
+            memory: 2G
+            cpu: 1000m
+          requests:
+            memory: 2G
+            cpu: 1000m
+        env:
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+                fieldPath: spec.nodeName
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+                fieldPath: metadata.name
+        - name: SERVICE_NAME
+          value: "bookkeeper"
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - bookkeeper
+            topologyKey: "kubernetes.io/hostname"

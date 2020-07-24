@@ -12,7 +12,6 @@ RUN yum install -y openssh-server && \
     mkdir -p /root/.ssh && \
     ssh-keygen -t rsa -f /root/.ssh/id_rsa -P ""  && \
     cat /root/.ssh/id_rsa.pub >> /root/.ssh/authorized_keys && \
-    echo "/usr/sbin/sshd" >> /etc/bashrc && \
     cp /opt/sh/ssh_config /etc/ssh/ssh_config && \
     rm -rf /opt/sh/ssh_config && \
     yum clean all && \
