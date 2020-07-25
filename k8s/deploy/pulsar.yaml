@@ -17,6 +17,7 @@ spec:
       containers:
       - name: pulsar
         image: ttbb/pulsar:cluster
+        imagePullPolicy: Always
         resources:
           limits:
             memory: 2G
@@ -33,3 +34,7 @@ spec:
           valueFrom:
             fieldRef:
                 fieldPath: metadata.name
+        - name: ZK_ADDR
+          value: "zookeeper-0.zookeeper:2181,zookeeper-1.zookeeper:2181,zookeeper-2.zookeeper:2181"  
+        - name: CLUSTER_NAME
+          value: "pulsar"                   
