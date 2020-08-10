@@ -1,8 +1,9 @@
-FROM ttbb/base:jdk8
+# docker run -p 9042:9042 -p 7000:7000 -d ttbb/cassandra:stand-alone
+FROM ttbb/base:jdk11
 
 LABEL maintainer="shoothzj@gmail.com"
 
-RUN wget https://apache.website-solution.net/cassandra/3.11.6/apache-cassandra-3.11.6-bin.tar.gz && \
+RUN wget https://downloads.apache.org/cassandra/4.0-beta1/apache-cassandra-4.0-beta1-bin.tar.gz && \
 mkdir -p /opt/sh/cassandra && \
-tar -xf apache-cassandra-3.11.6-bin.tar.gz -C /opt/sh/cassandra --strip-components 1 && \
-rm -rf apache-cassandra-3.11.6-bin.tar.gz
+tar -xf apache-cassandra-4.0-beta1-bin.tar.gz -C /opt/sh/cassandra --strip-components 1 && \
+rm -rf apache-cassandra-4.0-beta1-bin.tar.gz
