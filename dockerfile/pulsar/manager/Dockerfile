@@ -7,10 +7,10 @@ WORKDIR /opt/sh
 COPY source /opt/sh
 
 RUN yum install -y git npm && \
-wget https://downloads.gradle.org/distributions/gradle-6.3-bin.zip && \
-unzip -d /opt/gradle gradle-6.3-bin.zip && \
-echo "export GRADLE_HOME='/opt/gradle/gradle-6.3'" >> /etc/bashrc && \
-echo "export PATH=/opt/gradle/gradle-6.3/bin:${PATH}" >> /etc/bashrc && \
+wget https://services.gradle.org/distributions/gradle-6.6-bin.zip && \
+unzip -d /opt/gradle gradle-6.6-bin.zip && \
+echo "export GRADLE_HOME='/opt/gradle/gradle-6.6'" >> /etc/bashrc && \
+echo "export PATH=/opt/gradle/gradle-6.6/bin:${PATH}" >> /etc/bashrc && \
 git clone https://github.com/apache/pulsar-manager.git && \
 cd pulsar-manager && \
 /opt/sh/pulsar-manager/gradlew build -x test && \
