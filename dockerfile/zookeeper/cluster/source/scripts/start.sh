@@ -16,7 +16,7 @@ echo "" >> /opt/sh/zookeeper/conf/zoo.cfg
 
 # 补充zoo.cfg文件
 # 格式server.${index}=zookeeper-${index}.zookeeper
-zk_prefix=`echo $HOSTNAME|head -c-3`
+zk_prefix=`echo $HOSTNAME|head -c -3`
 for ((i=1;i<=$ZOOKEEPER_NUM;i++))
 do
     zk_index=$[$i-1]
