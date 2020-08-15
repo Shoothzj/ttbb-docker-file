@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: flink-master
   labels:
@@ -9,6 +9,7 @@ spec:
   selector:
     matchLabels:
       app: flink-master
+  serviceName: "flink-master"
   template:
     metadata:
       labels:
@@ -16,7 +17,7 @@ spec:
     spec:
       containers:
       - name: flink-master
-        image: ttbb/flink:master
+        image: ttbb/flink:cluster
         imagePullPolicy: Always
         resources:
           limits:

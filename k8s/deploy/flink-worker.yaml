@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: flink-worker
-        image: ttbb/flink:cluster
+        image: ttbb/flink:worker
         imagePullPolicy: Always
         resources:
           limits:
