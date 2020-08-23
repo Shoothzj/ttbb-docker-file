@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: flink-master
+  name: hadoop-data
   labels:
-    app: flink-master
+    app: hadoop-data
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: flink-master
-  serviceName: "flink-master"
+      app: hadoop-data
+  serviceName: "hadoop-data"
   template:
     metadata:
       labels:
-        app: flink-master
+        app: hadoop-data
     spec:
       containers:
-      - name: flink-master
-        image: ttbb/flink:cluster
+      - name: hadoop-data
+        image: ttbb/hadoop:data
         imagePullPolicy: Always
         resources:
           limits:
