@@ -1,29 +1,29 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: pf-kafka-consumer
+  name: pf-mysql-producer
   labels:
-    app: pf-kafka-consumer
+    app: pf-mysql-producer
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: pf-kafka-consumer
+      app: pf-mysql-producer
   template:
     metadata:
       labels:
-        app: pf-kafka-consumer
+        app: pf-mysql-producer
     spec:
       containers:
-      - name: pf-kafka-consumer
-        image: ttbb/java-demo:kafkaPfConsumer
-        imagePullPolicy: Always
+      - name: pf-mysql-producer
+        image: ttbb/java-demo:mysqlPfProducer
+        imagePullPolicy: IfNotPresent
         resources:
           limits:
-            memory: 2G
+            memory: 4G
             cpu: 1000m
           requests:
-            memory: 2G
+            memory: 4G
             cpu: 1000m
         env:
         - name: NODE_NAME
