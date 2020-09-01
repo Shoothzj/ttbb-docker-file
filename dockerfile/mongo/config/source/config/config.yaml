@@ -1,0 +1,9 @@
+sharding:
+  clusterRole: configsvr
+replication:
+  replSetName: ttbb
+net:
+  port: 27019
+  bindIp: 0.0.0.0
+storage:
+  dbPath: /opt/sh/mongo/db

@@ -6,4 +6,4 @@ COPY prometheus-sh /opt/sh/prometheus-sh
 
 COPY prometheus-template /opt/sh/prometheus-template
 
-CMD ["/usr/local/bin/dumb-init", "/opt/sh/prometheus/prometheus", "--config.file=/opt/sh/prometheus/prometheus.yml"]
+CMD ["/usr/local/bin/dumb-init", "/opt/sh/prometheus-sh/start.sh"]
