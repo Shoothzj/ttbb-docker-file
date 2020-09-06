@@ -6,14 +6,13 @@ cd ..
 
 echo `pwd`
 
-mkdir -p /var/log/kibana
-
 # The URLs of the Elasticsearch instances to use for all your queries.
 # elasticsearch.hosts: ["http://${ES_ADDRESS}"]
 
-cp /opt/sh/conf/kibana.yml /etc/kibana/kibana.yml
+echo '' >> /opt/sh/kibana/config/kibana.yml
+echo 'elasticsearch.hosts: ["'$ES_ADDR'"]' >> /opt/sh/kibana/config/kibana.yml
+echo 'server.host: "0.0.0.0"' >> /opt/sh/kibana/config/kibana.yml
 
-echo '' >> /etc/kibana/kibana.yml
-echo 'elasticsearch.hosts: ["'$ES_ADDR'"]' >> /etc/kibana/kibana.yml
+/opt/sh/kibana/bin/kibana --allow-root
 
-/usr/share/kibana/bin/kibana --allow-root
+tail -f /dev/null
