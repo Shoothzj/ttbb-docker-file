@@ -1,27 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: filebeat
+  name: chronograf
   labels:
-    app: filebeat
+    app: chronograf
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: filebeat
+      app: chronograf
   template:
     metadata:
       labels:
-        app: filebeat
+        app: chronograf
     spec:
       hostNetwork: true
       dnsPolicy: ClusterFirstWithHostNet
       containers:
-      - name: filebeat
-        image: ttbb/filebeat:stand-alone
-        volumeMounts:
-          - mountPath: /opt/sh/collect/log
-            name: sh-log
+      - name: chronograf
+        image: ttbb/chronograf:stand-alone
         imagePullPolicy: IfNotPresent
         resources:
           limits:
@@ -38,11 +35,6 @@ spec:
         - name: POD_NAME
           valueFrom:
             fieldRef:
-                fieldPath: metadata.name 
+                fieldPath: metadata.name
         - name: PS1
-          value: '[\u@filebeat@\W]\$ '
-      volumes:
-      - name: sh-log
-        hostPath:
-          path: /opt/sh/log  
-            
+          value: '[\u@chronograf@\W]\$ '
