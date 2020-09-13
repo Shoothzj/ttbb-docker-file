@@ -1,4 +1,4 @@
-# docker run -p 9042:9042 -p 7000:7000 -d ttbb/cassandra:stand-alone-eth0
+# docker run --name cassandra -p 9042:9042 -p 7000:7000 -d ttbb/cassandra:stand-alone-eth0
 FROM ttbb/cassandra:nake
 
 LABEL maintainer="shoothzj@gmail.com"
