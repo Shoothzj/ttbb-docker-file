@@ -1,0 +1,1 @@
+bash build-push.sh compile jdk8
