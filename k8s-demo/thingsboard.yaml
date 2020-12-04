@@ -1,24 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: influxdb
+  name: thingsboard
   labels:
-    app: influxdb
+    app: thingsboard
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: influxdb
+      app: thingsboard
   template:
     metadata:
       labels:
-        app: influxdb
+        app: thingsboard
     spec:
       hostNetwork: true
       dnsPolicy: ClusterFirstWithHostNet
       containers:
-      - name: influxdb
-        image: ttbb/influxdb:stand-alone
+      - name: thingsboard
+        image: ttbb/thingsboard:stand-alone
         imagePullPolicy: IfNotPresent
         resources:
           limits:
@@ -37,4 +37,4 @@ spec:
             fieldRef:
                 fieldPath: metadata.name
         - name: PS1
-          value: '[\u@influxdb@\W]\$ '
+          value: '[\u@thingsboard@\W]\$ '
