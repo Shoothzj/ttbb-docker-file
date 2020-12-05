@@ -1,3 +1,4 @@
+bash publish-apollo.sh
 bash publish-base.sh
 bash publish-bookkeeper.sh
 bash publish-cassandra.sh
