@@ -1,1 +1,1 @@
-bash build-push.sh clickhouse nake
+bash ../build-push.sh clickhouse nake
