@@ -43,11 +43,6 @@ bash ../build-push.sh mongo config
 bash ../build-push.sh mongo router
 bash ../build-push.sh mongo shard
 
-bash ../build-push.sh mysql nake
-bash ../build-push.sh mysql stand-alone
-bash ../build-push.sh mysql stand-alone-5-6
-bash ../build-push.sh mysql stand-alone-5-7
-
 bash ../build-push.sh neo4j nake
 bash ../build-push.sh neo4j stand-alone
 

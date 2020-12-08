@@ -1,4 +1,4 @@
-FROM ttbb/nginx:nake
+FROM ttbb/nginx:openresty
 
 COPY nginx.conf /usr/local/openresty/nginx/conf/nginx.conf
 

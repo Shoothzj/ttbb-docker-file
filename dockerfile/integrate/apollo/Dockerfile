@@ -1,0 +1,41 @@
+# integrate for apollo all
+# docker run -p 3306:3306 -p 8070:8070 -p 8080:8080 -p 8090:8090 -d ttbb/integrate:apollo
+FROM ttbb/base:jdk8
+
+# install mysql first
+WORKDIR /opt/sh
+
+RUN wget https://dev.mysql.com/get/mysql80-community-release-el8-1.noarch.rpm && \
+yum localinstall -y mysql80-community-release-el8-1.noarch.rpm && \
+rm -rf mysql80-community-release-el8-1.noarch.rpm && \
+yum module disable -y mysql && \
+yum install -y mysql-community-server && \
+chmod 777 -R /var/log && \
+chown -R sh:sh /var/lib/mysql* && \
+chown -R sh:sh /run/mysqld && \
+mysqld --initialize-insecure --user=root
+
+COPY source /opt/sh
+
+WORKDIR /opt/sh/apollo-config
+
+RUN wget https://github.com/ctripcorp/apollo/releases/download/v1.7.1/apollo-configservice-1.7.1-github.zip  && \
+unzip apollo-configservice-1.7.1-github.zip && \
+rm -rf apollo-configservice-1.7.1-github.zip && \
+cp /opt/sh/conf/apollo-config.properties /opt/sh/apollo-config/config/application-github.properties
+
+WORKDIR /opt/sh/apollo-admin
+
+RUN wget https://github.com/ctripcorp/apollo/releases/download/v1.7.1/apollo-adminservice-1.7.1-github.zip  && \
+unzip apollo-adminservice-1.7.1-github.zip && \
+rm -rf apollo-adminservice-1.7.1-github.zip && \
+cp /opt/sh/conf/apollo-admin.properties /opt/sh/apollo-admin/config/application-github.properties
+
+WORKDIR /opt/sh/apollo-portal
+
+RUN wget https://github.com/ctripcorp/apollo/releases/download/v1.7.1/apollo-portal-1.7.1-github.zip  && \
+unzip apollo-portal-1.7.1-github.zip && \
+rm -rf apollo-portal-1.7.1-github.zip && \
+cp /opt/sh/conf/apollo-portal.properties /opt/sh/apollo-portal/config/application-github.properties
+
+CMD ["/usr/local/bin/dumb-init", "bash", "-vx", "/opt/sh/scripts/start.sh"]
