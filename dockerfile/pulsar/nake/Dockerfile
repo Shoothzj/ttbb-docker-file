@@ -5,3 +5,5 @@ RUN wget https://archive.apache.org/dist/pulsar/pulsar-2.7.0/apache-pulsar-2.7.0
 mkdir -p /opt/sh/pulsar && \
 tar -xf apache-pulsar-2.7.0-bin.tar.gz -C /opt/sh/pulsar --strip-components 1 && \
 rm -rf apache-pulsar-2.7.0-bin.tar.gz
+
+WORKDIR /opt/sh/pulsar
