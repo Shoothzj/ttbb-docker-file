@@ -77,3 +77,13 @@ bash ../build-push.sh telegraf stand-alone
 bash ../build-push.sh zookeeper nake
 bash ../build-push.sh zookeeper stand-alone
 bash ../build-push.sh zookeeper cluster
+
+bash ../build-push.sh apisix nake
+
+bash ../build-push.sh etcd nake
+
+bash ../build-push.sh integrate apisix
+bash ../build-push.sh integrate apollo
+bash ../build-push.sh integrate elasticsearch-kibana
+bash ../build-push.sh integrate grafana-prometheus
+bash ../build-push.sh integrate prometheus-all
