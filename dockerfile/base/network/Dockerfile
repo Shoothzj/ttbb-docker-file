@@ -5,4 +5,5 @@ LABEL maintainer="shoothzj@gmail.com"
 LABEL description="This is network image"
 
 
-RUN yum install -y nftables nftables
+RUN dnf install -y nftables nftables && \
+    dnf clean all

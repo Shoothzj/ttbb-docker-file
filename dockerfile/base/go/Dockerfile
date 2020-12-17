@@ -5,4 +5,5 @@ LABEL maintainer="shoothzj@gmail.com"
 LABEL description="This is go base image"
 
 
-RUN yum install -y golang
+RUN dnf install -y golang && \
+    dnf clean all

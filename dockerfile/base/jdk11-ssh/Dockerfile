@@ -5,7 +5,8 @@ LABEL maintainer="shoothzj@gmail.com"
 
 COPY ssh_config /opt/sh/ssh_config
 
-RUN yum install -y openssh-server && \
+RUN dnf install -y openssh-server && \
+    dnf clean all && \
     ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -P ""  && \
     ssh-keygen -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key -P "" && \
     ssh-keygen -t ed25519 -f /etc/ssh/ssh_host_ed25519_key -P "" && \
@@ -13,6 +14,4 @@ RUN yum install -y openssh-server && \
     ssh-keygen -t rsa -f /root/.ssh/id_rsa -P ""  && \
     cat /root/.ssh/id_rsa.pub >> /root/.ssh/authorized_keys && \
     cp /opt/sh/ssh_config /etc/ssh/ssh_config && \
-    rm -rf /opt/sh/ssh_config && \
-    yum clean all && \
-    rm -rf /var/cache/yum
+    rm -rf /opt/sh/ssh_config

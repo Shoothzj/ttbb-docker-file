@@ -1,4 +1,4 @@
-#docker run -d ttbb/grafana:stand-alone
+# docker run -p 3000:3000 -d ttbb/grafana:stand-alone
 FROM ttbb/grafana:nake
 
 COPY source /opt/sh/grafana-support

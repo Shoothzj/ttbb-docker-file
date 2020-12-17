@@ -51,8 +51,6 @@ bash ../build-push.sh node-exporter stand-alone
 
 bash ../build-push.sh postgre nake
 
-bash ../build-push.sh prometheus nake
-
 bash ../build-push.sh pulsar nake
 bash ../build-push.sh pulsar stand-alone
 bash ../build-push.sh pulsar stand-alone-2-6-0
@@ -74,16 +72,6 @@ bash ../build-push.sh spark py-learn
 bash ../build-push.sh telegraf nake
 bash ../build-push.sh telegraf stand-alone
 
-bash ../build-push.sh zookeeper nake
-bash ../build-push.sh zookeeper stand-alone
-bash ../build-push.sh zookeeper cluster
-
 bash ../build-push.sh apisix nake
 
 bash ../build-push.sh etcd nake
-
-bash ../build-push.sh integrate apisix
-bash ../build-push.sh integrate apollo
-bash ../build-push.sh integrate elasticsearch-kibana
-bash ../build-push.sh integrate grafana-prometheus
-bash ../build-push.sh integrate prometheus-all

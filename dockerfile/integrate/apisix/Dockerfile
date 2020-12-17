@@ -1,4 +1,3 @@
-# integrate for apollo all
 # docker run -d ttbb/integrate:apisix
 FROM ttbb/base
 
@@ -18,33 +17,25 @@ cp etcd/etcdctl /usr/bin/etcdctl
 # then openresty
 WORKDIR /opt/sh
 
-RUN wget https://openresty.org/download/openresty-1.19.3.1.tar.gz && \
-mkdir /opt/sh/openresty && \
-tar -xf /opt/sh/openresty-1.19.3.1.tar.gz -C /opt/sh/openresty --strip-components 1 && \
-rm -rf /opt/sh/openresty-1.19.3.1.tar.gz
+RUN wget 'https://openresty.org/package/fedora/openresty.repo' && \
+mv openresty.repo /etc/yum.repos.d/ && \
+dnf install -y openresty && \
+yum install -y gcc luarocks lua-devel
 
-WORKDIR /opt/sh/openresty
-
-RUN yum install -y perl pcre-devel openssl-devel gcc curl luarocks
-RUN ./configure && \
-gmake && \
-gmake install && \
-echo "export PATH=$PATH:/usr/local/openresty/nginx/sbin" >> /etc/bashrc && \
-echo "export PATH=$PATH:/usr/local/openresty/bin" >> /etc/bashrc && \
-echo "chown -R sh:sh /usr/local/openresty" >> /etc/bashrc && \
-rm -rf /opt/sh/openresty && \
-cp /opt/sh/conf/nginx.conf /usr/local/openresty/nginx/conf
 
 # then install apisix
 
 WORKDIR /opt/sh
 
 RUN wget https://downloads.apache.org/apisix/2.1/apache-apisix-2.1-src.tgz  && \
-mkdir -p /opt/sh/apisix && \
-tar -xf apache-apisix-2.1-src.tgz -C /opt/sh/apisix --strip-components 1 && \
+mkdir -p apisix && \
+tar -xf apache-apisix-2.1-src.tgz -C apisix --strip-components 1 && \
 rm -rf apache-apisix-2.1-src.tgz && \
-echo "export PATH=$PATH:/opt/sh/apisix/bin" >> /etc/bashrc
+yum install -y git make
 
 WORKDIR /opt/sh/apisix
+
+RUN make deps && \
+echo "export PATH=$PATH:/opt/sh/apisix/bin" >> /etc/bashrc
 
 CMD ["/usr/local/bin/dumb-init", "bash", "-vx", "/opt/sh/scripts/start.sh"]

@@ -5,5 +5,5 @@ LABEL maintainer="shoothzj@gmail.com"
 LABEL description="This is node base image"
 
 
-RUN dnf -y module enable nodejs:12 && \
-dnf -y module enable nodejs:12
+RUN dnf install -y nodejs && \
+dnf clean all

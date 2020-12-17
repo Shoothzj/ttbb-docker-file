@@ -5,5 +5,5 @@ LABEL maintainer="shoothzj@gmail.com"
 LABEL description="This is erlang base image"
 
 
-RUN yum install -y epel-release && \
-yum install -y erlang
+RUN dnf install -y erlang && \
+    dnf clean all

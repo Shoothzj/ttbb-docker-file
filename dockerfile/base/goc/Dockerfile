@@ -5,4 +5,5 @@ LABEL maintainer="shoothzj@gmail.com"
 LABEL description="This is goc base image"
 
 
-RUN yum install -y git make
+RUN dnf install -y git make && \
+    dnf clean all
