@@ -1,0 +1,25 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+  scrape_timeout: 10s
+  external_labels:
+    cluster: "default"
+scrape_configs:
+  - job_name: "prometheus"
+    static_configs:
+      - targets: ["localhost:9090"]
+  - job_name: "zookeeper"
+    file_sd_configs:
+      - files:
+          - "/opt/sh/prometheus/zookeeper.json"
+        refresh_interval: 10s
+  - job_name: "bookkeeper"
+    file_sd_configs:
+      - files:
+          - "/opt/sh/prometheus/bookkeeper.json"
+        refresh_interval: 10s
+  - job_name: "pulsar"
+    file_sd_configs:
+      - files:
+          - "/opt/sh/prometheus/pulsar.json"
+        refresh_interval: 10s

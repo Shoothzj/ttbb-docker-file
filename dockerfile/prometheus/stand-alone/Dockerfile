@@ -1,9 +1,8 @@
 # ttbb/prometheus:stand-alone
 # docker run -p 9090:9090 -it -d ttbb/prometheus:stand-alone
+# docker run -p 30232:9090 -it -d ttbb/prometheus:stand-alone
 FROM ttbb/prometheus:nake
 
-COPY prometheus-sh /opt/sh/prometheus-sh
+COPY source /opt/sh
 
-COPY prometheus-template /opt/sh/prometheus-template
-
-CMD ["/usr/local/bin/dumb-init", "/opt/sh/prometheus-sh/start.sh"]
+CMD ["/usr/local/bin/dumb-init", "/opt/sh/scripts/start.sh"]
