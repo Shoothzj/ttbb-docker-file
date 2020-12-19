@@ -1,3 +1,3 @@
-cp /opt/sh/prometheus/hzj/conf/* /opt/sh/prometheus
-/opt/sh/prometheus/prometheus --config.file=/opt/sh/prometheus/prometheus.yml
+DIR="$( cd "$( dirname "$0"  )" && pwd  )"
+bash -x $DIR/start-daemon.sh
 tail -f /dev/null
