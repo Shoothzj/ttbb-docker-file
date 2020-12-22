@@ -6,46 +6,35 @@ PROM_DIR = sys.argv[1]
 PROM_CONFIG = PROM_DIR + "/" + "prometheus.yml"
 
 
-def zookeeper_static():
-    print("zookeeper static")
+def common_static(service, env_service):
+    print("common static")
     with open(PROM_CONFIG, "a") as file:
-        file.write('  - job_name: "zookeeper"')
+        file.write('  - job_name: "' + service + '"')
         file.write("\n")
         file.write('    file_sd_configs:')
         file.write("\n")
         file.write('      - files:')
         file.write("\n")
-        file.write('          - "/opt/sh/prometheus/zookeeper.json"')
+        file.write('          - "/opt/sh/prometheus/' + service + '.json"')
         file.write("\n")
         file.write('        refresh_interval: 10s')
         file.write("\n")
-    zookeeper_hosts = os.getenv("ZOOKEEPER_HOSTS")
-    zookeeper_host_array = zookeeper_hosts.split(',')
-    one_target = {"targets": zookeeper_host_array}
+    hosts = os.getenv(env_service + "_HOSTS")
+    host_array = hosts.split(',')
+    one_target = {"targets": host_array}
     targets = [one_target]
-    with open(PROM_DIR + "/" + "zookeeper.json", "w") as file:
+    with open(PROM_DIR + "/" + service + ".json", "w") as file:
         file.write(json.dumps(targets))
+
+
+def zookeeper_static():
+    print("zookeeper static")
+    common_static("zookeeper", "ZOOKEEPER")
 
 
 def bookkeeper_static():
     print("bookkeeper static")
-    with open(PROM_CONFIG, "a") as file:
-        file.write('  - job_name: "bookkeeper"')
-        file.write("\n")
-        file.write('    file_sd_configs:')
-        file.write("\n")
-        file.write('      - files:')
-        file.write("\n")
-        file.write('          - "/opt/sh/prometheus/bookkeeper.json"')
-        file.write("\n")
-        file.write('        refresh_interval: 10s')
-        file.write("\n")
-    bookkeeper_hosts = os.getenv("BOOKKEEPER_HOSTS")
-    zookeeper_host_array = bookkeeper_hosts.split(',')
-    one_target = {"targets": zookeeper_host_array}
-    targets = [one_target]
-    with open(PROM_DIR + "/" + "bookkeeper.json", "w") as file:
-        file.write(json.dumps(targets))
+    common_static("bookkeeper", "BOOKKEEPER")
 
 
 def pulsar_dns():
@@ -70,6 +59,11 @@ def pulsar_dns():
         file.write("\n")
 
 
+def pulsar_static():
+    print("pulsar static")
+    common_static("pulsar", "PULSAR")
+
+
 zookeeper_type = os.getenv('ZOOKEEPER_TYPE')
 if zookeeper_type == 'static':
     zookeeper_static()
@@ -83,3 +77,5 @@ else:
 pulsar_type = os.getenv('PULSAR_TYPE')
 if pulsar_type == 'dns':
     pulsar_dns()
+elif pulsar_type == 'static':
+    pulsar_static()

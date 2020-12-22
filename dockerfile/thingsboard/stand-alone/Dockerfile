@@ -1,4 +1,4 @@
-# docker run -p 8086:8086 -p 8088:8088 ttbb/influxdb:stand-alone
+# docker run ttbb/thingsboard:stand-alone
 FROM ttbb/thingsboard:nake
 
 COPY source /opt/sh

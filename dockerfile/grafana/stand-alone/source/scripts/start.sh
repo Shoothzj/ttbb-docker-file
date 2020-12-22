@@ -1,3 +1,3 @@
-cd /opt/sh/grafana
-/usr/local/bin/dumb-init /opt/sh/grafana/bin/grafana-server web
+DIR="$( cd "$( dirname "$0"  )" && pwd  )"
+bash -x $DIR/start-daemon.sh
 tail -f /dev/null
