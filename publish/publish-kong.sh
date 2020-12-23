@@ -1,1 +1,1 @@
-bash ../build-push.sh kong nake
+bash $DIR/../build-push.sh kong nake

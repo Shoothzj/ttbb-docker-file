@@ -1,1 +1,1 @@
-bash ../build-push.sh compile jdk8
+bash $DIR/../build-push.sh compile jdk8

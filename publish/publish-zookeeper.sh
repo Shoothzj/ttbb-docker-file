@@ -1,3 +1,3 @@
-bash ../build-push.sh zookeeper nake
-bash ../build-push.sh zookeeper stand-alone
-bash ../build-push.sh zookeeper cluster
+bash $DIR/../build-push.sh zookeeper nake
+bash $DIR/../build-push.sh zookeeper stand-alone
+bash $DIR/../build-push.sh zookeeper cluster

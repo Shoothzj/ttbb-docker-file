@@ -1,2 +1,2 @@
-bash ../build-push.sh prometheus nake
-bash ../build-push.sh prometheus stand-alone
+bash $DIR/../build-push.sh prometheus nake
+bash $DIR/../build-push.sh prometheus stand-alone

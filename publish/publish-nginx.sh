@@ -1,3 +1,3 @@
-bash ../build-push.sh nginx nake
-bash ../build-push.sh nginx openresty
-bash ../build-push.sh nginx print-body
+bash $DIR/../build-push.sh nginx nake
+bash $DIR/../build-push.sh nginx openresty
+bash $DIR/../build-push.sh nginx print-body

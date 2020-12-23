@@ -1,1 +1,1 @@
-bash ../build-push.sh coredns nake
+bash $DIR/../build-push.sh coredns nake

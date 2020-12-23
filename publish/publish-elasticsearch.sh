@@ -1,3 +1,3 @@
-bash ../build-push.sh elasticsearch nake
-bash ../build-push.sh elasticsearch stand-alone
-bash ../build-push.sh elasticsearch cluster
+bash $DIR/../build-push.sh elasticsearch nake
+bash $DIR/../build-push.sh elasticsearch stand-alone
+bash $DIR/../build-push.sh elasticsearch cluster

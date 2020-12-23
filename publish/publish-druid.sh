@@ -1,1 +1,1 @@
-bash ../build-push.sh druid nake
+bash $DIR/../build-push.sh druid nake

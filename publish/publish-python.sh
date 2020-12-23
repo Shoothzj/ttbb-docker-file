@@ -1,1 +1,1 @@
-bash ../build-push.sh python hub-mqtt
+bash $DIR/../build-push.sh python hub-mqtt
