@@ -6,8 +6,8 @@ PROM_DIR = sys.argv[1]
 PROM_CONFIG = PROM_DIR + "/" + "prometheus.yml"
 
 
-def common_static(service, env_service):
-    print("common static")
+def common_static(service, env_service_prefix):
+    print("common static " + service + " " + env_service_prefix)
     with open(PROM_CONFIG, "a") as file:
         file.write('  - job_name: "' + service + '"')
         file.write("\n")
@@ -19,7 +19,7 @@ def common_static(service, env_service):
         file.write("\n")
         file.write('        refresh_interval: 10s')
         file.write("\n")
-    hosts = os.getenv(env_service + "_HOSTS")
+    hosts = os.getenv(env_service_prefix + "_HOSTS")
     host_array = hosts.split(',')
     one_target = {"targets": host_array}
     targets = [one_target]
@@ -27,55 +27,37 @@ def common_static(service, env_service):
         file.write(json.dumps(targets))
 
 
-def zookeeper_static():
-    print("zookeeper static")
-    common_static("zookeeper", "ZOOKEEPER")
-
-
-def bookkeeper_static():
-    print("bookkeeper static")
-    common_static("bookkeeper", "BOOKKEEPER")
-
-
-def pulsar_dns():
-    print("pulsar dns")
+def common_dns(service, env_service_prefix, port):
+    print("common dns " + service + " " + env_service_prefix + " " + port)
     with open(PROM_CONFIG, "a") as file:
-        file.write('  - job_name: "pulsar"')
+        file.write('  - job_name: "' + service + '"')
         file.write("\n")
         file.write('    dns_sd_configs:')
         file.write("\n")
         file.write('      - names:')
         file.write("\n")
-        pulsar_hosts = os.getenv("PULSAR_DOMAINS")
+        pulsar_hosts = os.getenv(env_service_prefix + "_DOMAINS")
         pulsar_host_array = pulsar_hosts.split(',')
         for host in pulsar_host_array:
             file.write('          - "' + host + '"')
             file.write("\n")
         file.write('        type: "A"')
         file.write("\n")
-        file.write('        port: 8080')
+        file.write('        port: ' + port)
         file.write("\n")
         file.write('        refresh_interval: 10s')
         file.write("\n")
 
 
-def pulsar_static():
-    print("pulsar static")
-    common_static("pulsar", "PULSAR")
+def common(service, env_service_prefix, port):
+    grab_type = os.getenv(env_service_prefix + "_TYPE")
+    if grab_type == 'dns':
+        common_dns(service, env_service_prefix, port)
+    else:
+        common_static(service, env_service_prefix)
 
 
-zookeeper_type = os.getenv('ZOOKEEPER_TYPE')
-if zookeeper_type == 'static':
-    zookeeper_static()
-else:
-    zookeeper_static()
-bookkeeper_type = os.getenv('BOOKKEEPER_TYPE')
-if bookkeeper_type == 'static':
-    bookkeeper_static()
-else:
-    bookkeeper_static()
-pulsar_type = os.getenv('PULSAR_TYPE')
-if pulsar_type == 'dns':
-    pulsar_dns()
-elif pulsar_type == 'static':
-    pulsar_static()
+common('zookeeper', "ZOOKEEPER", 7000)
+common('bookkeeper', "BOOKKEEPER", 8080)
+common('pulsar', "PULSAR", 8080)
+common('pulsar_proxy', "PULSAR_PROXY", 8080)
