@@ -1,4 +1,5 @@
 #current version ttbb/kibana:nake
+# docker run -it ttbb/kibana:nake bash
 FROM ttbb/base
 
 LABEL maintainer="shoothzj@gmail.com"

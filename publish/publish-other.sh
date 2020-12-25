@@ -30,9 +30,6 @@ bash $DIR/../build-push.sh kafka cluster
 bash $DIR/../build-push.sh kapacitor nake
 bash $DIR/../build-push.sh kapacitor stand-alone
 
-bash $DIR/../build-push.sh kibana nake
-bash $DIR/../build-push.sh kibana stand-alone
-
 bash $DIR/../build-push.sh mariadb stand-alone
 
 bash $DIR/../build-push.sh metricbeat nake

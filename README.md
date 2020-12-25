@@ -1,11 +1,13 @@
-### 仓库介绍
+# 仓库介绍
 存放ttbb的镜像仓库
 
-## base
+### base
 
 ### jdk11-ssh
 调用/usr/sbin/sshd
 
-
 ## es部署
 参考: https://blog.csdn.net/chenleiking/article/details/79453460
+
+# 声明
+- 其中出现的密码仅为示例密码，如需正式使用，请修改密码

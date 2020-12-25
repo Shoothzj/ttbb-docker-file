@@ -1,5 +1,5 @@
 FROM ttbb/metricbeat:nake
 
-COPY source /opt/sh
+COPY source /opt/sh/metricbeat/hzj
 
-CMD ["/usr/local/bin/dumb-init", "bash", "-vx", "/opt/sh/scripts/start.sh"]
+CMD ["/usr/local/bin/dumb-init", "bash", "-vx","/opt/sh/metricbeat/hzj/scripts/start.sh"]

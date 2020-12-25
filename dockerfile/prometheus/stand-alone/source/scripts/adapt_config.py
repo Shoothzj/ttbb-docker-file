@@ -57,7 +57,7 @@ def common(service, env_service_prefix, port):
         common_static(service, env_service_prefix)
 
 
-common('zookeeper', "ZOOKEEPER", 7000)
-common('bookkeeper', "BOOKKEEPER", 8080)
-common('pulsar', "PULSAR", 8080)
-common('pulsar_proxy', "PULSAR_PROXY", 8080)
+common('zookeeper', "ZOOKEEPER", "7000")
+common('bookkeeper', "BOOKKEEPER", "8080")
+common('pulsar', "PULSAR", "8080")
+common('pulsar_proxy', "PULSAR_PROXY", "8080")

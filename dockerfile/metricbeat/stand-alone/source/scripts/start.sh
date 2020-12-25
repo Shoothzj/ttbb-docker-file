@@ -1,12 +1,4 @@
 #!/usr/bin/env bash
-cd "$(dirname "$0")"
-
-cd ..
-
-echo `pwd`
-
-cp /opt/sh/conf/metricbeat.yml /opt/sh/metricbeat/metricbeat.yml
-
-/opt/sh/metricbeat/metricbeat -e
-
+DIR="$( cd "$( dirname "$0"  )" && pwd  )"
+bash -x $DIR/start-daemon.sh
 tail -f /dev/null
