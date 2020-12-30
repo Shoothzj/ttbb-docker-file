@@ -4,6 +4,7 @@ FROM ttbb/base:latest
 LABEL maintainer="shoothzj@gmail.com"
 LABEL description="This is go base image"
 
-
-RUN dnf install -y golang && \
-    dnf clean all
+RUN wget https://golang.org/dl/go1.15.6.linux-amd64.tar.gz && \
+    tar -C /usr/local -xzf go1.15.6.linux-amd64.tar.gz && \
+    ln -s /usr/local/go/bin/go /usr/bin/go && \
+    rm -rf go1.15.6.linux-amd64.tar.gz

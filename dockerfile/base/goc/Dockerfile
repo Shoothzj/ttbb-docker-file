@@ -1,4 +1,5 @@
-#当前版本 ttbb/base:goc
+# 当前版本 ttbb/base:goc
+# docker run -it ttbb/base:goc bash
 FROM ttbb/base:go
 
 LABEL maintainer="shoothzj@gmail.com"
