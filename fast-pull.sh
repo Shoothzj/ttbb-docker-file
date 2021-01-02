@@ -1,0 +1,17 @@
+docker pull ttbb/apollo:config
+docker pull ttbb/apollo:admin
+docker pull ttbb/apollo:portal
+docker pull ttbb/bookkeeper:stand-alone
+docker pull ttbb/cassandra:stand-alone
+docker pull ttbb/chronograf:stand-alone
+docker pull ttbb/elasticsearch:stand-alone
+docker pull ttbb/grafana:stand-alone
+docker pull ttbb/integrate:elasticsearch-kibana
+docker pull ttbb/integrate:grafana-prometheus
+docker pull ttbb/kibana:stand-alone
+docker pull ttbb/logstash:stand-alone
+docker pull ttbb/mysql:stand-alone
+docker pull ttbb/nginx:nake
+docker pull ttbb/nginx:openresty
+docker pull ttbb/prometheus:stand-alone
+docker pull ttbb/zookeeper:stand-alone
