@@ -3,7 +3,7 @@ FROM ttbb/mysql:exporter AS exporter
 
 FROM ttbb/mysql:stand-alone
 
-COPY --from=exporter /opt/sh/exporter /opt/sh/exporter
+COPY --from=exporter /opt/sh/mysqld_exporter /opt/sh/mysql/mysqld_exporter
 
 COPY source /opt/sh
 

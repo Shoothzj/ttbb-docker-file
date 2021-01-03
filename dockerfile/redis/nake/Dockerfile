@@ -14,8 +14,12 @@ make
 
 FROM ttbb/base
 
-COPY --from=compiler /opt/sh/redis/src/redis-sentinel /opt/sh/redis
-COPY --from=compiler /opt/sh/redis/src/redis-cli /opt/sh/redis
-COPY --from=compiler /opt/sh/redis/src/redis-benchmark /opt/sh/redis
-COPY --from=compiler /opt/sh/redis/src/redis-check-rdb /opt/sh/redis
-COPY --from=compiler /opt/sh/redis/src/redis-check-aof /opt/sh/redis
+COPY --from=compiler /opt/sh/redis/redis.conf /opt/sh/redis/redis.conf
+COPY --from=compiler /opt/sh/redis/src/redis-sentinel /opt/sh/redis/redis-sentinel
+COPY --from=compiler /opt/sh/redis/src/redis-cli /opt/sh/redis/redis-cli
+COPY --from=compiler /opt/sh/redis/src/redis-server /opt/sh/redis/redis-server
+COPY --from=compiler /opt/sh/redis/src/redis-benchmark /opt/sh/redis/redis-benchmark
+COPY --from=compiler /opt/sh/redis/src/redis-check-rdb /opt/sh/redis-check-rdb
+COPY --from=compiler /opt/sh/redis/src/redis-check-aof /opt/sh/redis-check-aof
+
+WORKDIR /opt/sh/redis
