@@ -120,7 +120,7 @@
             },
             "tableColumn": "",
             "targets": [{
-                "expr": "sum(pulsar_topics_count{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"})",
+                "expr": "sum(pulsar_topics_count{job=\"pulsar\", namespace=~\"$namespace\"})",
                 "format": "time_series",
                 "intervalFactor": 1,
                 "refId": "A"
@@ -193,7 +193,7 @@
             },
             "tableColumn": "",
             "targets": [{
-                "expr": "sum(pulsar_producers_count{cluster=~\"$cluster\", job=~\"broker\",  namespace=~\"$namespace\"})",
+                "expr": "sum(pulsar_producers_count{job=\"pulsar\",  namespace=~\"$namespace\"})",
                 "format": "time_series",
                 "interval": "",
                 "intervalFactor": 1,
@@ -268,7 +268,7 @@
             },
             "tableColumn": "",
             "targets": [{
-                "expr": "sum(pulsar_subscriptions_count{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"})",
+                "expr": "sum(pulsar_subscriptions_count{job=\"pulsar\", namespace=~\"$namespace\"})",
                 "format": "time_series",
                 "interval": "",
                 "intervalFactor": 1,
@@ -343,7 +343,7 @@
             },
             "tableColumn": "",
             "targets": [{
-                "expr": "sum(pulsar_consumers_count{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"})",
+                "expr": "sum(pulsar_consumers_count{job=\"pulsar\", namespace=~\"$namespace\"})",
                 "format": "time_series",
                 "interval": "",
                 "intervalFactor": 1,
@@ -418,7 +418,7 @@
             },
             "tableColumn": "",
             "targets": [{
-                "expr": "sum(pulsar_msg_backlog{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"})",
+                "expr": "sum(pulsar_msg_backlog{job=\"pulsar\", namespace=~\"$namespace\"})",
                 "format": "time_series",
                 "interval": "",
                 "intervalFactor": 1,
@@ -493,7 +493,7 @@
             },
             "tableColumn": "",
             "targets": [{
-                "expr": "sum(pulsar_storage_size{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"})",
+                "expr": "sum(pulsar_storage_size{job=\"pulsar\", namespace=~\"$namespace\"})",
                 "format": "time_series",
                 "interval": "",
                 "intervalFactor": 1,
@@ -557,7 +557,7 @@
                     "stack": false,
                     "steppedLine": false,
                     "targets": [{
-                        "expr": "sum(pulsar_rate_in{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) by (cluster, namespace)",
+                        "expr": "sum(pulsar_rate_in{job=\"pulsar\", namespace=~\"$namespace\"}) by (cluster, namespace)",
                         "format": "time_series",
                         "interval": "",
                         "intervalFactor": 2,
@@ -641,7 +641,7 @@
                     "stack": false,
                     "steppedLine": false,
                     "targets": [{
-                        "expr": "sum(pulsar_rate_out{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) by (cluster, namespace)",
+                        "expr": "sum(pulsar_rate_out{job=\"pulsar\", namespace=~\"$namespace\"}) by (cluster, namespace)",
                         "format": "time_series",
                         "intervalFactor": 2,
                         "legendFormat": "{{cluster}} - {{namespace}}",
@@ -724,7 +724,7 @@
                     "stack": false,
                     "steppedLine": false,
                     "targets": [{
-                        "expr": "sum(pulsar_throughput_in{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) by (cluster, namespace)",
+                        "expr": "sum(pulsar_throughput_in{job=\"pulsar\", namespace=~\"$namespace\"}) by (cluster, namespace)",
                         "format": "time_series",
                         "interval": "",
                         "intervalFactor": 2,
@@ -810,7 +810,7 @@
                     "stack": false,
                     "steppedLine": false,
                     "targets": [{
-                        "expr": "sum(pulsar_throughput_out{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) by (cluster, namespace)",
+                        "expr": "sum(pulsar_throughput_out{job=\"pulsar\", namespace=~\"$namespace\"}) by (cluster, namespace)",
                         "format": "time_series",
                         "interval": "",
                         "intervalFactor": 2,
@@ -895,7 +895,7 @@
                     "stack": false,
                     "steppedLine": false,
                     "targets": [{
-                            "expr": "sum(pulsar_topics_count{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"})",
+                            "expr": "sum(pulsar_topics_count{job=\"pulsar\", namespace=~\"$namespace\"})",
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 2,
@@ -905,7 +905,7 @@
                             "step": 10
                         },
                         {
-                            "expr": "sum(pulsar_producers_count{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"})",
+                            "expr": "sum(pulsar_producers_count{job=\"pulsar\", namespace=~\"$namespace\"})",
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 2,
@@ -915,7 +915,7 @@
                             "step": 10
                         },
                         {
-                            "expr": "sum(pulsar_subscriptions_count{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"})",
+                            "expr": "sum(pulsar_subscriptions_count{job=\"pulsar\", namespace=~\"$namespace\"})",
                             "format": "time_series",
                             "intervalFactor": 2,
                             "legendFormat": "subscriptions",
@@ -924,7 +924,7 @@
                             "step": 10
                         },
                         {
-                            "expr": "sum(pulsar_consumers_count{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"})",
+                            "expr": "sum(pulsar_consumers_count{job=\"pulsar\", namespace=~\"$namespace\"})",
                             "format": "time_series",
                             "intervalFactor": 2,
                             "legendFormat": "consumers",
@@ -1011,7 +1011,7 @@
                     "stack": false,
                     "steppedLine": false,
                     "targets": [{
-                        "expr": "sum(pulsar_msg_backlog{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) by (cluster, namespace)",
+                        "expr": "sum(pulsar_msg_backlog{job=\"pulsar\", namespace=~\"$namespace\"}) by (cluster, namespace)",
                         "format": "time_series",
                         "interval": "",
                         "intervalFactor": 2,
@@ -1124,7 +1124,7 @@
                     "stack": true,
                     "steppedLine": false,
                     "targets": [{
-                            "expr": "sum(pulsar_storage_write_latency_le_0_5{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) / 60.0",
+                            "expr": "sum(pulsar_storage_write_latency_le_0_5{job=\"pulsar\", namespace=~\"$namespace\"}) / 60.0",
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 2,
@@ -1134,7 +1134,7 @@
                             "step": 10
                         },
                         {
-                            "expr": "sum(pulsar_storage_write_latency_le_1{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) / 60.0",
+                            "expr": "sum(pulsar_storage_write_latency_le_1{job=\"pulsar\", namespace=~\"$namespace\"}) / 60.0",
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 2,
@@ -1144,7 +1144,7 @@
                             "step": 10
                         },
                         {
-                            "expr": "sum(pulsar_storage_write_latency_le_5{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) / 60.0",
+                            "expr": "sum(pulsar_storage_write_latency_le_5{job=\"pulsar\", namespace=~\"$namespace\"}) / 60.0",
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 2,
@@ -1154,7 +1154,7 @@
                             "step": 10
                         },
                         {
-                            "expr": "sum(pulsar_storage_write_latency_le_10{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) / 60.0",
+                            "expr": "sum(pulsar_storage_write_latency_le_10{job=\"pulsar\", namespace=~\"$namespace\"}) / 60.0",
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 2,
@@ -1164,7 +1164,7 @@
                             "step": 10
                         },
                         {
-                            "expr": "sum(pulsar_storage_write_latency_le_20{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) / 60.0",
+                            "expr": "sum(pulsar_storage_write_latency_le_20{job=\"pulsar\", namespace=~\"$namespace\"}) / 60.0",
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 2,
@@ -1174,7 +1174,7 @@
                             "step": 10
                         },
                         {
-                            "expr": "sum(pulsar_storage_write_latency_le_50{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) / 60.0",
+                            "expr": "sum(pulsar_storage_write_latency_le_50{job=\"pulsar\", namespace=~\"$namespace\"}) / 60.0",
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 2,
@@ -1184,7 +1184,7 @@
                             "step": 10
                         },
                         {
-                            "expr": "sum(pulsar_storage_write_latency_le_100{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) / 60.0",
+                            "expr": "sum(pulsar_storage_write_latency_le_100{job=\"pulsar\", namespace=~\"$namespace\"}) / 60.0",
                             "format": "time_series",
                             "hide": false,
                             "interval": "",
@@ -1195,7 +1195,7 @@
                             "step": 10
                         },
                         {
-                            "expr": "sum(pulsar_storage_write_latency_le_200{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) / 60.0",
+                            "expr": "sum(pulsar_storage_write_latency_le_200{job=\"pulsar\", namespace=~\"$namespace\"}) / 60.0",
                             "format": "time_series",
                             "intervalFactor": 2,
                             "legendFormat": "100 - 200 ms",
@@ -1204,7 +1204,7 @@
                             "step": 10
                         },
                         {
-                            "expr": "sum(pulsar_storage_write_latency_le_1000{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) / 60.0",
+                            "expr": "sum(pulsar_storage_write_latency_le_1000{job=\"pulsar\", namespace=~\"$namespace\"}) / 60.0",
                             "format": "time_series",
                             "intervalFactor": 2,
                             "legendFormat": "200 ms - 1 s",
@@ -1213,7 +1213,7 @@
                             "step": 10
                         },
                         {
-                            "expr": "sum(pulsar_storage_write_latency_overflow{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) / 60.0",
+                            "expr": "sum(pulsar_storage_write_latency_overflow{job=\"pulsar\", namespace=~\"$namespace\"}) / 60.0",
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 2,
@@ -1298,7 +1298,7 @@
                     "stack": false,
                     "steppedLine": false,
                     "targets": [{
-                        "expr": "sum(pulsar_storage_size{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"})",
+                        "expr": "sum(pulsar_storage_size{job=\"pulsar\", namespace=~\"$namespace\"})",
                         "format": "time_series",
                         "interval": "",
                         "intervalFactor": 2,
@@ -1384,7 +1384,7 @@
                     "stack": false,
                     "steppedLine": false,
                     "targets": [{
-                        "expr": "sum(pulsar_storage_write_latency_count{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"})",
+                        "expr": "sum(pulsar_storage_write_latency_count{job=\"pulsar\", namespace=~\"$namespace\"})",
                         "format": "time_series",
                         "interval": "",
                         "intervalFactor": 2,
@@ -1469,7 +1469,7 @@
                     "stack": false,
                     "steppedLine": false,
                     "targets": [{
-                        "expr": "sum(pulsar_storage_read_latency_count{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"})",
+                        "expr": "sum(pulsar_storage_read_latency_count{job=\"pulsar\", namespace=~\"$namespace\"})",
                         "format": "time_series",
                         "interval": "",
                         "intervalFactor": 2,
@@ -1556,7 +1556,7 @@
                     "stack": true,
                     "steppedLine": false,
                     "targets": [{
-                            "expr": "sum(pulsar_entry_size_le_128{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) / 60.0",
+                            "expr": "sum(pulsar_entry_size_le_128{job=\"pulsar\", namespace=~\"$namespace\"}) / 60.0",
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 2,
@@ -1566,7 +1566,7 @@
                             "step": 10
                         },
                         {
-                            "expr": "sum(pulsar_entry_size_le_512{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) / 60.0",
+                            "expr": "sum(pulsar_entry_size_le_512{job=\"pulsar\", namespace=~\"$namespace\"}) / 60.0",
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 2,
@@ -1576,7 +1576,7 @@
                             "step": 10
                         },
                         {
-                            "expr": "sum(pulsar_entry_size_le_1_kb{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) / 60.0",
+                            "expr": "sum(pulsar_entry_size_le_1_kb{job=\"pulsar\", namespace=~\"$namespace\"}) / 60.0",
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 2,
@@ -1586,7 +1586,7 @@
                             "step": 10
                         },
                         {
-                            "expr": "sum(pulsar_entry_size_le_2_kb{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) / 60.0",
+                            "expr": "sum(pulsar_entry_size_le_2_kb{job=\"pulsar\", namespace=~\"$namespace\"}) / 60.0",
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 2,
@@ -1596,7 +1596,7 @@
                             "step": 10
                         },
                         {
-                            "expr": "sum(pulsar_entry_size_le_4_kb{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) / 60.0",
+                            "expr": "sum(pulsar_entry_size_le_4_kb{job=\"pulsar\", namespace=~\"$namespace\"}) / 60.0",
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 2,
@@ -1606,7 +1606,7 @@
                             "step": 10
                         },
                         {
-                            "expr": "sum(pulsar_entry_size_le_16_kb{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) / 60.0",
+                            "expr": "sum(pulsar_entry_size_le_16_kb{job=\"pulsar\", namespace=~\"$namespace\"}) / 60.0",
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 2,
@@ -1616,7 +1616,7 @@
                             "step": 10
                         },
                         {
-                            "expr": "sum(pulsar_entry_size_le_100_kb{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) / 60.0",
+                            "expr": "sum(pulsar_entry_size_le_100_kb{job=\"pulsar\", namespace=~\"$namespace\"}) / 60.0",
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 2,
@@ -1626,7 +1626,7 @@
                             "step": 10
                         },
                         {
-                            "expr": "sum(pulsar_entry_size_le_1_mb{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) / 60.0",
+                            "expr": "sum(pulsar_entry_size_le_1_mb{job=\"pulsar\", namespace=~\"$namespace\"}) / 60.0",
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 2,
@@ -1636,7 +1636,7 @@
                             "step": 10
                         },
                         {
-                            "expr": "sum(pulsar_entry_size_overflow{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) / 60.0",
+                            "expr": "sum(pulsar_entry_size_overflow{job=\"pulsar\", namespace=~\"$namespace\"}) / 60.0",
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 2,
@@ -1734,7 +1734,7 @@
                     "stack": false,
                     "steppedLine": false,
                     "targets": [{
-                        "expr": "sum(pulsar_replication_rate_in{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\", remote_cluster!=\"local\"}) by (cluster, remote_cluster)",
+                        "expr": "sum(pulsar_replication_rate_in{job=\"pulsar\", namespace=~\"$namespace\", remote_cluster!=\"local\"}) by (cluster, remote_cluster)",
                         "format": "time_series",
                         "interval": "",
                         "intervalFactor": 2,
@@ -1818,7 +1818,7 @@
                     "stack": false,
                     "steppedLine": false,
                     "targets": [{
-                        "expr": "sum(pulsar_replication_rate_out{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"})",
+                        "expr": "sum(pulsar_replication_rate_out{job=\"pulsar\", namespace=~\"$namespace\"})",
                         "format": "time_series",
                         "intervalFactor": 2,
                         "legendFormat": "{{cluster}} → {{remote_cluster}}",
@@ -1901,7 +1901,7 @@
                     "stack": false,
                     "steppedLine": false,
                     "targets": [{
-                        "expr": "sum(pulsar_replication_backlog{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) by (cluster, remote_cluster)",
+                        "expr": "sum(pulsar_replication_backlog{job=\"pulsar\", namespace=~\"$namespace\"}) by (cluster, remote_cluster)",
                         "format": "time_series",
                         "intervalFactor": 2,
                         "legendFormat": "{{cluster}} → {{remote_cluster}}",

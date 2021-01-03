@@ -81,7 +81,7 @@
             "stack": false,
             "steppedLine": false,
             "targets": [{
-                "expr": "sum(pulsar_proxy_active_connections{cluster=~\"$cluster\", job=~\"proxy\", instance=~\"$instance\"}) by (instance)",
+                "expr": "sum(pulsar_proxy_active_connections{job=\"pulsar_proxy\", instance=~\"$instance\"}) by (instance)",
                 "format": "time_series",
                 "interval": "",
                 "intervalFactor": 2,
@@ -165,7 +165,7 @@
             "stack": false,
             "steppedLine": false,
             "targets": [{
-                "expr": "sum(rate(pulsar_proxy_new_connections{cluster=~\"$cluster\", job=~\"proxy\", instance=~\"$instance\"}[30s])) by (instance)",
+                "expr": "sum(rate(pulsar_proxy_new_connections{job=\"pulsar_proxy\", instance=~\"$instance\"}[30s])) by (instance)",
                 "format": "time_series",
                 "interval": "",
                 "intervalFactor": 2,
@@ -249,7 +249,7 @@
             "stack": false,
             "steppedLine": false,
             "targets": [{
-                "expr": "sum(rate(pulsar_proxy_rejected_connections{cluster=~\"$cluster\", job=~\"proxy\", instance=~\"$instance\"}[30s])) by (instance)",
+                "expr": "sum(rate(pulsar_proxy_rejected_connections{job=\"pulsar_proxy\", instance=~\"$instance\"}[30s])) by (instance)",
                 "format": "time_series",
                 "interval": "",
                 "intervalFactor": 2,
@@ -332,7 +332,7 @@
             "stack": false,
             "steppedLine": false,
             "targets": [{
-                "expr": "sum(rate(pulsar_proxy_binary_ops{cluster=~\"$cluster\", job=~\"proxy\", instance=~\"$instance\"}[1m])) by (instance)",
+                "expr": "sum(rate(pulsar_proxy_binary_ops{job=\"pulsar_proxy\", instance=~\"$instance\"}[1m])) by (instance)",
                 "format": "time_series",
                 "interval": "",
                 "intervalFactor": 2,
@@ -414,7 +414,7 @@
             "stack": false,
             "steppedLine": false,
             "targets": [{
-                "expr": "sum(rate(pulsar_proxy_binary_ops{cluster=~\"$cluster\", job=~\"proxy\", instance=~\"$instance\"}[1m])) by (instance)",
+                "expr": "sum(rate(pulsar_proxy_binary_ops{job=\"pulsar_proxy\", instance=~\"$instance\"}[1m])) by (instance)",
                 "format": "time_series",
                 "interval": "",
                 "intervalFactor": 2,
@@ -496,7 +496,7 @@
             "stack": false,
             "steppedLine": false,
             "targets": [{
-                "expr": "sum(rate(jetty_requests_total{cluster=~\"$cluster\", instance=~\"$instance\"}[1m])) by (instance)",
+                "expr": "sum(rate(jetty_requests_total{instance=~\"$instance\"}[1m])) by (instance)",
                 "format": "time_series",
                 "intervalFactor": 1,
                 "legendFormat": "{{instance}}",
@@ -578,7 +578,7 @@
             "stack": false,
             "steppedLine": false,
             "targets": [{
-                "expr": "sum(rate(pulsar_proxy_lookup_requests{cluster=~\"$cluster\", job=~\"proxy\", instance=~\"$instance\"}[1m])) by (instance)",
+                "expr": "sum(rate(pulsar_proxy_lookup_requests{job=\"pulsar_proxy\", instance=~\"$instance\"}[1m])) by (instance)",
                 "format": "time_series",
                 "interval": "",
                 "intervalFactor": 2,
@@ -662,7 +662,7 @@
             "stack": false,
             "steppedLine": false,
             "targets": [{
-                "expr": "sum(rate(pulsar_proxy_partitions_metadata_requests{cluster=~\"$cluster\", job=~\"proxy\", instance=~\"$instance\"}[1m])) by (instance)",
+                "expr": "sum(rate(pulsar_proxy_partitions_metadata_requests{job=\"pulsar_proxy\", instance=~\"$instance\"}[1m])) by (instance)",
                 "format": "time_series",
                 "interval": "",
                 "intervalFactor": 2,
@@ -746,7 +746,7 @@
             "stack": false,
             "steppedLine": false,
             "targets": [{
-                "expr": "sum(rate(pulsar_proxy_get_topics_of_namespace_requests{cluster=~\"$cluster\", job=~\"proxy\", instance=~\"$instance\"}[1m])) by (instance)",
+                "expr": "sum(rate(pulsar_proxy_get_topics_of_namespace_requests{job=\"pulsar_proxy\", instance=~\"$instance\"}[1m])) by (instance)",
                 "format": "time_series",
                 "interval": "",
                 "intervalFactor": 2,
@@ -830,7 +830,7 @@
             "stack": false,
             "steppedLine": false,
             "targets": [{
-                "expr": "sum(rate(pulsar_proxy_rejected_lookup_requests{cluster=~\"$cluster\", job=~\"proxy\", instance=~\"$instance\"}[1m])) by (instance)",
+                "expr": "sum(rate(pulsar_proxy_rejected_lookup_requests{job=\"pulsar_proxy\", instance=~\"$instance\"}[1m])) by (instance)",
                 "format": "time_series",
                 "interval": "",
                 "intervalFactor": 2,
@@ -914,7 +914,7 @@
             "stack": false,
             "steppedLine": false,
             "targets": [{
-                "expr": "sum(rate(pulsar_proxy_rejected_partitions_metadata_requests{cluster=~\"$cluster\", job=~\"proxy\", instance=~\"$instance\"}[1m])) by (instance)",
+                "expr": "sum(rate(pulsar_proxy_rejected_partitions_metadata_requests{job=\"pulsar_proxy\", instance=~\"$instance\"}[1m])) by (instance)",
                 "format": "time_series",
                 "interval": "",
                 "intervalFactor": 2,
@@ -998,7 +998,7 @@
             "stack": false,
             "steppedLine": false,
             "targets": [{
-                "expr": "sum(\n  rate(\n    pulsar_proxy_rejected_get_topics_of_namespace_requests{\n            cluster=~\"$cluster\", job=~\"proxy\", \n            instance=~\"$instance\"}[1m]\n    )\n  ) \nby (instance)",
+                "expr": "sum(\n  rate(\n    pulsar_proxy_rejected_get_topics_of_namespace_requests{\n            job=\"pulsar_proxy\", \n            instance=~\"$instance\"}[1m]\n    )\n  ) \nby (instance)",
                 "format": "time_series",
                 "interval": "",
                 "intervalFactor": 2,

@@ -59,6 +59,7 @@ bash $DIR/../build-push.sh rabbitmq nake
 bash $DIR/../build-push.sh rabbitmq stand-alone
 
 bash $DIR/../build-push.sh redis nake
+bash $DIR/../build-push.sh redis exporter
 
 bash $DIR/../build-push.sh skywalking nake
 bash $DIR/../build-push.sh skywalking stand-alone

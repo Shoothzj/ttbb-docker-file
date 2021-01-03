@@ -10,3 +10,6 @@ mysqld --user=root
 
 ### mysql日志路径
 /var/log/mysqld.log
+
+### exporter
+export DATA_SOURCE_NAME='exporter:export_pwd@(hostname:3306)/'

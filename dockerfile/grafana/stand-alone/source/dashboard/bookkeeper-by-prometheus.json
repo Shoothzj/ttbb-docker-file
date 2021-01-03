@@ -248,7 +248,7 @@
             "stack": false,
             "steppedLine": false,
             "targets": [{
-                    "expr": "100 * sum(irate(bookkeeper_server_ADD_ENTRY_count{job=~\"$job\", instance=~\"$instance\", success=\"true\"}[30s])) / sum(irate(bookkeeper_server_ADD_ENTRY_count{job=~\"$job\", instance=~\"$instance\"}[30s]))",
+                    "expr": "100 * sum(irate(bookkeeper_server_ADD_ENTRY_count{job=~\"$job\", instance=~\"$instance\", success=\"true\"}[1m])) / sum(irate(bookkeeper_server_ADD_ENTRY_count{job=~\"$job\", instance=~\"$instance\"}[1m]))",
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 2,
@@ -257,7 +257,7 @@
                     "step": 2
                 },
                 {
-                    "expr": "100 * sum(irate(bookkeeper_server_READ_ENTRY_count{job=~\"$job\", instance=~\"$instance\", success=\"true\"}[30s])) / sum(irate(bookkeeper_server_READ_ENTRY_count{job=~\"$job\", instance=~\"$instance\"}[30s]))",
+                    "expr": "100 * sum(irate(bookkeeper_server_READ_ENTRY_count{job=~\"$job\", instance=~\"$instance\", success=\"true\"}[1m])) / sum(irate(bookkeeper_server_READ_ENTRY_count{job=~\"$job\", instance=~\"$instance\"}[1m]))",
                     "format": "time_series",
                     "intervalFactor": 1,
                     "legendFormat": "read_entry",
@@ -533,7 +533,7 @@
             "stack": false,
             "steppedLine": false,
             "targets": [{
-                    "expr": "sum(rate(bookie_WRITE_BYTES{job=~\"$job\"}[30s]))",
+                    "expr": "sum(rate(bookie_WRITE_BYTES{job=~\"$job\"}[1m]))",
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 2,
@@ -542,7 +542,7 @@
                     "step": 2
                 },
                 {
-                    "expr": "sum(rate(bookie_READ_BYTES{job=~\"$job\"}[30s]))",
+                    "expr": "sum(rate(bookie_READ_BYTES{job=~\"$job\"}[1m]))",
                     "format": "time_series",
                     "intervalFactor": 1,
                     "legendFormat": "read entry",
@@ -625,7 +625,7 @@
             "stack": false,
             "steppedLine": false,
             "targets": [{
-                    "expr": "sum(irate(bookkeeper_server_READ_ENTRY_count{job=~\"$job\", instance=~\"$instance\", success=\"true\"}[30s]))",
+                    "expr": "sum(irate(bookkeeper_server_READ_ENTRY_count{job=~\"$job\", instance=~\"$instance\", success=\"true\"}[1m]))",
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 2,
@@ -634,7 +634,7 @@
                     "step": 2
                 },
                 {
-                    "expr": "sum(irate(bookkeeper_server_ADD_ENTRY_count{job=~\"$job\", instance=~\"$instance\", success=\"true\"}[30s]))",
+                    "expr": "sum(irate(bookkeeper_server_ADD_ENTRY_count{job=~\"$job\", instance=~\"$instance\", success=\"true\"}[1m]))",
                     "format": "time_series",
                     "intervalFactor": 1,
                     "legendFormat": "add entry",
@@ -726,7 +726,7 @@
                     "stack": false,
                     "steppedLine": false,
                     "targets": [{
-                        "expr": "sum(irate(bookie_WRITE_BYTES{job=~\"$job\", instance=~\"$instance\"}[30s])) by (instance)",
+                        "expr": "sum(irate(bookie_WRITE_BYTES{job=~\"$job\", instance=~\"$instance\"}[1m])) by (instance)",
                         "format": "time_series",
                         "interval": "",
                         "intervalFactor": 2,
@@ -810,7 +810,7 @@
                     "stack": false,
                     "steppedLine": false,
                     "targets": [{
-                        "expr": "sum(irate(bookie_READ_BYTES{job=~\"$job\", instance=~\"$instance\"}[30s])) by (instance)",
+                        "expr": "sum(irate(bookie_READ_BYTES{job=~\"$job\", instance=~\"$instance\"}[1m])) by (instance)",
                         "format": "time_series",
                         "interval": "",
                         "intervalFactor": 2,
@@ -894,7 +894,7 @@
                     "stack": false,
                     "steppedLine": false,
                     "targets": [{
-                        "expr": "sum(irate(bookkeeper_server_ADD_ENTRY_REQUEST_count{job=~\"$job\", instance=~\"$instance\"}[30s])) by (instance)",
+                        "expr": "sum(irate(bookkeeper_server_ADD_ENTRY_REQUEST_count{job=~\"$job\", instance=~\"$instance\"}[1m])) by (instance)",
                         "format": "time_series",
                         "interval": "",
                         "intervalFactor": 2,
@@ -978,7 +978,7 @@
                     "stack": false,
                     "steppedLine": false,
                     "targets": [{
-                        "expr": "sum(irate(bookkeeper_server_READ_ENTRY_REQUEST_count{job=~\"$job\", instance=~\"$instance\"}[30s])) by (instance)",
+                        "expr": "sum(irate(bookkeeper_server_READ_ENTRY_REQUEST_count{job=~\"$job\", instance=~\"$instance\"}[1m])) by (instance)",
                         "format": "time_series",
                         "interval": "",
                         "intervalFactor": 2,
@@ -1579,7 +1579,7 @@
                     "stack": false,
                     "steppedLine": false,
                     "targets": [{
-                        "expr": "sum(irate(bookie_journal_JOURNAL_SYNC_count{job=~\"$job\", instance=~\"$instance\", success=\"true\"}[30s])) by (instance)",
+                        "expr": "sum(irate(bookie_journal_JOURNAL_SYNC_count{job=~\"$job\", instance=~\"$instance\", success=\"true\"}[1m])) by (instance)",
                         "format": "time_series",
                         "interval": "",
                         "intervalFactor": 2,
@@ -1663,7 +1663,7 @@
                     "stack": false,
                     "steppedLine": false,
                     "targets": [{
-                        "expr": "sum(irate(bookie_journal_JOURNAL_ADD_ENTRY_count{job=~\"$job\", instance=~\"$instance\", success=\"true\"}[30s])) by (instance)",
+                        "expr": "sum(irate(bookie_journal_JOURNAL_ADD_ENTRY_count{job=~\"$job\", instance=~\"$instance\", success=\"true\"}[1m])) by (instance)",
                         "format": "time_series",
                         "interval": "",
                         "intervalFactor": 2,
