@@ -19,7 +19,7 @@ COPY --from=compiler /opt/sh/redis/src/redis-sentinel /opt/sh/redis/redis-sentin
 COPY --from=compiler /opt/sh/redis/src/redis-cli /opt/sh/redis/redis-cli
 COPY --from=compiler /opt/sh/redis/src/redis-server /opt/sh/redis/redis-server
 COPY --from=compiler /opt/sh/redis/src/redis-benchmark /opt/sh/redis/redis-benchmark
-COPY --from=compiler /opt/sh/redis/src/redis-check-rdb /opt/sh/redis-check-rdb
-COPY --from=compiler /opt/sh/redis/src/redis-check-aof /opt/sh/redis-check-aof
+COPY --from=compiler /opt/sh/redis/src/redis-check-rdb /opt/sh/redis/redis-check-rdb
+COPY --from=compiler /opt/sh/redis/src/redis-check-aof /opt/sh/redis/redis-check-aof
 
 WORKDIR /opt/sh/redis
