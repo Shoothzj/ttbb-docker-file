@@ -1,4 +1,5 @@
-# ttbb/nginx:nake
+# ttbb/nginx:openresty
+# docker run -it ttbb/nginx:openresty bash
 FROM ttbb/base
 
 LABEL maintainer="shoothzj@gmail.com"
@@ -14,11 +15,11 @@ rm -rf /opt/sh/openresty-1.19.3.1.tar.gz
 
 WORKDIR /opt/sh/openresty
 
-RUN yum install -y perl pcre-devel openssl-devel gcc curl
+RUN yum install -y perl pcre-devel openssl-devel gcc curl zlib-devel
 RUN ./configure && \
 gmake && \
 gmake install && \
-echo "export PATH=$PATH:/usr/local/openresty/nginx/sbin" >> /etc/bashrc && \
+ln -s /usr/local/openresty/nginx/sbin/nginx /usr/bin/nginx && \
 echo "export PATH=$PATH:/usr/local/openresty/bin" >> /etc/bashrc && \
 echo "chown -R sh:sh /usr/local/openresty" >> /etc/bashrc && \
 rm -rf /opt/sh/openresty && \

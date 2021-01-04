@@ -8,6 +8,6 @@ make
 
 FROM ttbb/base
 
-COPY --from=compiler /opt/sh/coredns/coredns /opt/sh/
+COPY --from=compiler /opt/sh/coredns/coredns /opt/sh/coredns
 
 WORKDIR /opt/sh/coredns
