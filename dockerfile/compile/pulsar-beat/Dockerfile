@@ -1,4 +1,5 @@
-#当前版本 ttbb/compile:pulsar-beat
+# 当前版本 ttbb/compile:pulsar-beat
+# docker run -it ttbb/compile:pulsar-beat bash
 FROM ttbb/base:goc
 
 LABEL maintainer="shoothzj@gmail.com"
