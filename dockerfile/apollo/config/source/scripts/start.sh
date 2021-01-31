@@ -1,4 +1,3 @@
-#!/usr/bin/env bash
-bash -x /opt/sh/scripts/startup.sh
-
+DIR="$( cd "$( dirname "$0"  )" && pwd  )"
+bash -x $DIR/start-daemon.sh
 tail -f /dev/null

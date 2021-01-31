@@ -6,11 +6,16 @@ PROM_DIR = sys.argv[1]
 PROM_CONFIG = PROM_DIR + "/" + "prometheus.yml"
 
 
-def common_static(service, env_service_prefix):
+def common_static(service, env_service_prefix, ssl_enable):
     print("common static " + service + " " + env_service_prefix)
     with open(PROM_CONFIG, "a") as file:
         file.write('  - job_name: "' + service + '"')
         file.write("\n")
+        if ssl_enable:
+            file.write('    tls_config:')
+            file.write('        ca_file: ' + PROM_DIR + '/tls/ca.pem')
+            file.write('        cert_file: ' + PROM_DIR + '/tls/client.pem')
+            file.write('        key_file: ' + PROM_DIR + '/tls/client-key.pem')
         file.write('    file_sd_configs:')
         file.write("\n")
         file.write('      - files:')
@@ -27,11 +32,16 @@ def common_static(service, env_service_prefix):
         file.write(json.dumps(targets))
 
 
-def common_dns(service, env_service_prefix, port):
+def common_dns(service, env_service_prefix, port, ssl_enable):
     print("common dns " + service + " " + env_service_prefix + " " + port)
     with open(PROM_CONFIG, "a") as file:
         file.write('  - job_name: "' + service + '"')
         file.write("\n")
+        if ssl_enable:
+            file.write('    tls_config:')
+            file.write('        ca_file: ' + PROM_DIR + '/tls/ca.pem')
+            file.write('        cert_file: ' + PROM_DIR + '/tls/client.pem')
+            file.write('        key_file: ' + PROM_DIR + '/tls/client-key.pem') 
         file.write('    dns_sd_configs:')
         file.write("\n")
         file.write('      - names:')
@@ -51,10 +61,13 @@ def common_dns(service, env_service_prefix, port):
 
 def common(service, env_service_prefix, port):
     grab_type = os.getenv(env_service_prefix + "_TYPE")
+    if grab_type is None:
+        return
+    ssl_enable = os.getenv(env_service_prefix + "_SSL") is not None
     if grab_type == 'dns':
-        common_dns(service, env_service_prefix, port)
+        common_dns(service, env_service_prefix, port, ssl_enable)
     else:
-        common_static(service, env_service_prefix)
+        common_static(service, env_service_prefix, ssl_enable)
 
 
 common('zookeeper', "ZOOKEEPER", "7000")

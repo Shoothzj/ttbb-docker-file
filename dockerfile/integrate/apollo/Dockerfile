@@ -1,5 +1,10 @@
 # integrate for apollo all
 # docker run -p 3306:3306 -p 8070:8070 -p 8080:8080 -p 8090:8090 -d ttbb/integrate:apollo
+# docker run -p 3306:3306 -p 8070:8070 -p 8080:8080 -p 30230:8090 -d ttbb/integrate:apollo
+FROM ttbb/apollo:admin AS admin
+FROM ttbb/apollo:config AS config
+FROM ttbb/apollo:portal AS portal
+
 FROM ttbb/base:jdk8
 
 # install mysql first
@@ -17,25 +22,10 @@ mysqld --initialize-insecure --user=root
 
 COPY source /opt/sh
 
-WORKDIR /opt/sh/apollo-config
+COPY --from=admin /opt/sh/apollo-admin /opt/sh/apollo-admin
+COPY --from=config /opt/sh/apollo-config /opt/sh/apollo-config
+COPY --from=portal /opt/sh/apollo-portal /opt/sh/apollo-portal
 
-RUN wget https://github.com/ctripcorp/apollo/releases/download/v1.7.1/apollo-configservice-1.7.1-github.zip  && \
-unzip apollo-configservice-1.7.1-github.zip && \
-rm -rf apollo-configservice-1.7.1-github.zip && \
-cp /opt/sh/conf/apollo-config.properties /opt/sh/apollo-config/config/application-github.properties
-
-WORKDIR /opt/sh/apollo-admin
-
-RUN wget https://github.com/ctripcorp/apollo/releases/download/v1.7.1/apollo-adminservice-1.7.1-github.zip  && \
-unzip apollo-adminservice-1.7.1-github.zip && \
-rm -rf apollo-adminservice-1.7.1-github.zip && \
-cp /opt/sh/conf/apollo-admin.properties /opt/sh/apollo-admin/config/application-github.properties
-
-WORKDIR /opt/sh/apollo-portal
-
-RUN wget https://github.com/ctripcorp/apollo/releases/download/v1.7.1/apollo-portal-1.7.1-github.zip  && \
-unzip apollo-portal-1.7.1-github.zip && \
-rm -rf apollo-portal-1.7.1-github.zip && \
-cp /opt/sh/conf/apollo-portal.properties /opt/sh/apollo-portal/config/application-github.properties
+WORKDIR /opt/sh
 
 CMD ["/usr/local/bin/dumb-init", "bash", "-vx", "/opt/sh/scripts/start.sh"]

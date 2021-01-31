@@ -1,11 +1,15 @@
 # docker run ttbb/apollo:portal
+# docker run -it ttbb/apollo:portal bash
 FROM ttbb/base:jdk8
 
-COPY source /opt/sh
+WORKDIR /opt/sh/apollo-portal
 
-RUN wget https://github.com/ctripcorp/apollo/releases/download/v1.7.1/apollo-portal-1.7.1-github.zip  && \
-unzip apollo-portal-1.7.1-github.zip && \
-rm -rf apollo-portal-1.7.1-github.zip && \
-cp /opt/sh/conf/apollo-portal.properties /opt/sh/config/application-github.properties
+COPY source /opt/sh/apollo-portal/hzj
 
-CMD ["/usr/local/bin/dumb-init", "bash", "-vx", "/opt/sh/scripts/start.sh"]
+RUN wget https://github.com/ctripcorp/apollo/releases/download/v1.7.2/apollo-portal-1.7.2-github.zip  && \
+unzip apollo-portal-1.7.2-github.zip && \
+rm -rf apollo-portal-1.7.2-github.zip && \
+cp hzj/conf/apollo-portal.properties config/application-github.properties && \
+cp hzj/conf/apollo-portal.conf apollo-portal.conf
+
+CMD ["/usr/local/bin/dumb-init", "bash", "-vx", "/opt/sh/apollo-portal/hzj/scripts/start.sh"]

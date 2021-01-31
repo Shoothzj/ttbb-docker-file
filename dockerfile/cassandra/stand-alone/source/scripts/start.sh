@@ -1,3 +1,3 @@
-cp /opt/sh/conf/cassandra-env.sh /opt/sh/cassandra/conf/cassandra-env.sh
-/opt/sh/cassandra/bin/cassandra -R
+DIR="$( cd "$( dirname "$0"  )" && pwd  )"
+bash -x $DIR/start-daemon.sh
 tail -f /dev/null

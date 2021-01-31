@@ -1,11 +1,14 @@
 # docker run ttbb/apollo:config
 FROM ttbb/base:jdk8
 
-COPY source /opt/sh
+WORKDIR /opt/sh/apollo-config
 
-RUN wget https://github.com/ctripcorp/apollo/releases/download/v1.7.1/apollo-configservice-1.7.1-github.zip  && \
-unzip apollo-configservice-1.7.1-github.zip && \
-rm -rf apollo-configservice-1.7.1-github.zip && \
-cp /opt/sh/conf/apollo-config.properties /opt/sh/config/application-github.properties
+COPY source /opt/sh/apollo-config/hzj
 
-CMD ["/usr/local/bin/dumb-init", "bash", "-vx", "/opt/sh/scripts/start.sh"]
+RUN wget https://github.com/ctripcorp/apollo/releases/download/v1.7.2/apollo-configservice-1.7.2-github.zip  && \
+unzip apollo-configservice-1.7.2-github.zip && \
+rm -rf apollo-configservice-1.7.2-github.zip && \
+cp hzj/conf/apollo-config.properties config/application-github.properties && \
+cp hzj/conf/apollo-configservice.conf apollo-configservice.conf
+
+CMD ["/usr/local/bin/dumb-init", "bash", "-vx", "/opt/sh/apollo-config/hzj/scripts/start.sh"]

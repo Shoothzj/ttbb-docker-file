@@ -1,11 +1,15 @@
 # docker run ttbb/apollo:admin
+# docker run -it ttbb/apollo:admin bash
 FROM ttbb/base:jdk8
 
-COPY source /opt/sh
+WORKDIR /opt/sh/apollo-admin
 
-RUN wget https://github.com/ctripcorp/apollo/releases/download/v1.7.1/apollo-adminservice-1.7.1-github.zip  && \
-unzip apollo-adminservice-1.7.1-github.zip && \
-rm -rf apollo-adminservice-1.7.1-github.zip && \
-cp /opt/sh/conf/apollo-admin.properties /opt/sh/config/application-github.properties
+COPY source /opt/sh/apollo-admin/hzj
 
-CMD ["/usr/local/bin/dumb-init", "bash", "-vx", "/opt/sh/scripts/start.sh"]
+RUN wget https://github.com/ctripcorp/apollo/releases/download/v1.7.2/apollo-adminservice-1.7.2-github.zip  && \
+unzip apollo-adminservice-1.7.2-github.zip && \
+rm -rf apollo-adminservice-1.7.2-github.zip && \
+cp hzj/conf/apollo-admin.properties config/application-github.properties && \
+cp hzj/conf/apollo-adminservice.conf apollo-adminservice.conf
+
+CMD ["/usr/local/bin/dumb-init", "bash", "-vx", "/opt/sh/apollo-admin/hzj/scripts/start.sh"]

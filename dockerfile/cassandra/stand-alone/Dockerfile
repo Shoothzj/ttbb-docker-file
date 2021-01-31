@@ -3,6 +3,6 @@ FROM ttbb/cassandra:nake
 
 LABEL maintainer="shoothzj@gmail.com"
 
-COPY source /opt/sh
+COPY source /opt/sh/cassandra/hzj
 
-CMD ["/usr/local/bin/dumb-init", "bash", "-vx","/opt/sh/scripts/start.sh"]
+CMD ["/usr/local/bin/dumb-init", "bash", "-vx","/opt/sh/cassandra/hzj/scripts/start.sh"]
