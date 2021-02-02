@@ -1992,7 +1992,7 @@
                 "multi": false,
                 "name": "namespace",
                 "options": [],
-                "query": "pulsar_rate_in{namespace=~\".+\", cluster=~\"$cluster\"}",
+                "query": "pulsar_rate_in{namespace=~\".+\"}",
                 "refresh": 2,
                 "regex": "/.*namespace=\\\"([^\\\"]+)\\\".*/",
                 "skipUrlSync": false,

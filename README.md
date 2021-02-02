@@ -1,7 +1,21 @@
 # 仓库介绍
 存放ttbb的镜像仓库
 
+# 环境变量介绍
+
+## grafana
+### GRAFANA_SMTP_ENABLED
+### GRAFANA_SMTP_HOST
+### GRAFANA_SMTP_USER
+### GRAFANA_SMTP_SKIP_VERIFY
+### GRAFANA_SMTP_FROM_ADDRESS
+### GRAFANA_SMTP_FROM_NAME
+
+
+## dockerfile
+
 ### base
+基础镜像
 
 ### jdk11-ssh
 调用/usr/sbin/sshd
