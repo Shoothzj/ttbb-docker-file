@@ -10,6 +10,9 @@ bash $DIR/publish-coredns.sh
 bash $DIR/publish-druid.sh
 bash $DIR/publish-elasticsearch.sh
 bash $DIR/publish-grafana.sh
+bash $DIR/publish-influxdb.sh
 bash $DIR/publish-nginx.sh
 bash $DIR/publish-other.sh
+bash $DIR/publish-prometheus.sh
+bash $DIR/publish-pulsar.sh
 bash $DIR/publish-python.sh

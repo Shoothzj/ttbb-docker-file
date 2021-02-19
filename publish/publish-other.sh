@@ -19,10 +19,6 @@ bash $DIR/../build-push.sh hadoop pseudo-distribute
 
 bash $DIR/../build-push.sh hbase nake
 
-bash $DIR/../build-push.sh influxdb nake
-bash $DIR/../build-push.sh influxdb stand-alone
-bash $DIR/../build-push.sh influxdb beta
-
 bash $DIR/../build-push.sh kafka nake
 bash $DIR/../build-push.sh kafka stand-alone
 bash $DIR/../build-push.sh kafka cluster
@@ -48,12 +44,6 @@ bash $DIR/../build-push.sh node-exporter nake
 bash $DIR/../build-push.sh node-exporter stand-alone
 
 bash $DIR/../build-push.sh postgre nake
-
-bash $DIR/../build-push.sh pulsar nake
-bash $DIR/../build-push.sh pulsar stand-alone
-bash $DIR/../build-push.sh pulsar stand-alone-2-6-0
-bash $DIR/../build-push.sh pulsar cluster
-bash $DIR/../build-push.sh pulsar manager
 
 bash $DIR/../build-push.sh rabbitmq nake
 bash $DIR/../build-push.sh rabbitmq stand-alone
