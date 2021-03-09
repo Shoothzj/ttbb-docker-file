@@ -1,3 +1,3 @@
-/opt/sh/pulsar-manager/build/distributions/pulsar-manager/bin/pulsar-manager &
-cd /opt/sh/pulsar-manager/front-end/
-npm run dev
+DIR="$( cd "$( dirname "$0"  )" && pwd  )"
+bash -x $DIR/start-daemon.sh
+tail -f /dev/null
