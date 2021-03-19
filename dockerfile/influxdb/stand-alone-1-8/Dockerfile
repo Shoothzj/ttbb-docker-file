@@ -11,4 +11,6 @@ echo "export PATH=$PATH:/opt/sh/influxdb/usr/bin" >> /etc/bashrc
 
 WORKDIR /opt/sh/influxdb
 
+ENV INFLUX_HOME /opt/sh/influxdb
+
 CMD ["/usr/local/bin/dumb-init", "bash", "-vx", "/opt/sh/influxdb/hzj/scripts/start.sh"]

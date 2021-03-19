@@ -3,4 +3,6 @@ FROM ttbb/influxdb:nake
 
 COPY source /opt/sh/influxdb/hzj
 
+ENV INFLUX_HOME /opt/sh/influxdb
+
 CMD ["/usr/local/bin/dumb-init", "bash", "-vx", "/opt/sh/influxdb/hzj/scripts/start.sh"]

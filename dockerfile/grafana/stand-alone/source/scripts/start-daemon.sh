@@ -5,7 +5,7 @@ cat $GRAFANA_HOME/hzj/config/part1.ini >> $GRAFANA_HOME/conf/grafana.ini
 python3 $GRAFANA_HOME/hzj/scripts/config_gen.py $GRAFANA_HOME
 cat $GRAFANA_HOME/hzj/config/part2.ini >> $GRAFANA_HOME/conf/grafana.ini
 
-nohup $GRAFANA_HOME/bin/grafana-server --config $GRAFANA_HOME/conf/grafana.ini web >$GRAFANA_HOME/grafana.log 2>$GRAFANA_HOME/grafana_error.log &
+nohup $GRAFANA_HOME/bin/grafana-server --homepath $GRAFANA_HOME --config $GRAFANA_HOME/conf/grafana.ini web >$GRAFANA_HOME/grafana.log 2>$GRAFANA_HOME/grafana_error.log &
 
 sleep 5
 
