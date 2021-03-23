@@ -4,4 +4,6 @@ COPY source /opt/sh/metricbeat/hzj
 
 WORKDIR /opt/sh/metricbeat
 
+ENV METRICBEAT_HOME /opt/sh/metricbeat
+
 CMD ["/usr/local/bin/dumb-init", "bash", "-vx","/opt/sh/metricbeat/hzj/scripts/start.sh"]
