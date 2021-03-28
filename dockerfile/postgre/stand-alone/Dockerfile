@@ -1,4 +1,4 @@
-#current version ttbb/postgre:nake
+# docker run -d ttbb/postgre:stand-alone
 FROM ttbb/base
 
 LABEL maintainer="shoothzj@gmail.com"
