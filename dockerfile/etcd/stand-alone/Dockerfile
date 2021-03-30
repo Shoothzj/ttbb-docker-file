@@ -1,4 +1,5 @@
 # docker run ttbb/etcd:stand-alone
+# docker run -p 2379:2379 ttbb/etcd:stand-alone
 FROM ttbb/etcd:nake
 
 COPY source /opt/sh/etcd/hzj

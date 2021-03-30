@@ -4,4 +4,8 @@ FROM ttbb/mysql:nake
 
 COPY source /opt/sh/mysql/hzj
 
+WORKDIR /opt/sh/mysql
+
+ENV MYSQL_HOME /opt/sh/mysql
+
 CMD ["/usr/local/bin/dumb-init", "bash", "-vx","/opt/sh/mysql/hzj/scripts/start.sh"]
