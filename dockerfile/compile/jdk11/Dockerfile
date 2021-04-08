@@ -1,5 +1,5 @@
-#当前版本 ttbb/compile:jdk8
-FROM ttbb/base:jdk8
+#当前版本 ttbb/compile:jdk11
+FROM ttbb/base:jdk11
 
 LABEL maintainer="shoothzj@gmail.com"
 

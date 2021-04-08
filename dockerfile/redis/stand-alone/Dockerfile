@@ -1,3 +1,4 @@
+# docker run -p 6379:6379 ttbb/redis:stand-alone
 # docker run -p 6379:6379 -d ttbb/redis:stand-alone
 # winpty docker run -p 6379:6379 -d ttbb/redis:stand-alone
 FROM ttbb/redis:nake

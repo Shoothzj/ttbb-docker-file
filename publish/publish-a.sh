@@ -21,6 +21,7 @@ bash $DIR/publish-logstash.sh
 bash $DIR/publish-mysql.sh
 bash $DIR/publish-nginx.sh
 bash $DIR/publish-other.sh
+bash $DIR/publish-postgre.sh
 bash $DIR/publish-prometheus.sh
 bash $DIR/publish-pulsar.sh
 bash $DIR/publish-python.sh

@@ -1,5 +1,6 @@
 DIR="$( cd "$( dirname "$0"  )" && pwd  )"
 bash $DIR/../build-push.sh base latest
+bash $DIR/../build-push.sh base ubuntu
 bash $DIR/../build-push.sh base erlang
 bash $DIR/../build-push.sh base go
 bash $DIR/../build-push.sh base goc

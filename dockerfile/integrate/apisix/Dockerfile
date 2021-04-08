@@ -1,41 +1,38 @@
 # docker run -d ttbb/integrate:apisix
-FROM ttbb/base
+FROM ttbb/etcd:nake AS etcd
+FROM ttbb/nginx:openresty AS openresty
+FROM ttbb/compile:c
 
-COPY source /opt/sh
-
-# install etcd first
-WORKDIR /opt/sh
-
-RUN wget https://github.com/etcd-io/etcd/releases/download/v3.4.14/etcd-v3.4.14-linux-amd64.tar.gz  && \
-mkdir -p etcd && \
-tar -xf etcd-v3.4.14-linux-amd64.tar.gz -C etcd --strip-components 1 && \
-rm -rf etcd-v3.4.14-linux-amd64.tar.gz && \
-cp etcd/etcd /usr/bin/etcd && \
-cp etcd/etcdctl /usr/bin/etcdctl
-
+COPY --from=etcd /opt/sh/etcd/etcd /usr/bin/etcd
+COPY --from=etcd /opt/sh/etcd/etcdctl /usr/bin/etcdctl
+COPY --from=openresty /opt/sh/openresty /opt/sh/openresty
 
 # then openresty
 WORKDIR /opt/sh
 
-RUN wget 'https://openresty.org/package/fedora/openresty.repo' && \
-mv openresty.repo /etc/yum.repos.d/ && \
-dnf install -y openresty && \
-yum install -y gcc luarocks lua-devel
+RUN ln -s /opt/sh/openresty/nginx/sbin/nginx /usr/bin/nginx && \
+ln -s /opt/sh/openresty/bin/openresty /usr/bin/openresty && \
+echo "export PATH=$PATH:/opt/sh/openresty/bin" >> /etc/bashrc && \
+dnf install -y luarocks lua-devel && \
+dnf clean all
 
 
 # then install apisix
-
 WORKDIR /opt/sh
 
-RUN wget https://downloads.apache.org/apisix/2.1/apache-apisix-2.1-src.tgz  && \
+RUN wget https://downloads.apache.org/apisix/2.5/apache-apisix-2.5-src.tgz  && \
 mkdir -p apisix && \
-tar -xf apache-apisix-2.1-src.tgz -C apisix --strip-components 1 && \
-rm -rf apache-apisix-2.1-src.tgz && \
-yum install -y git make
+tar -xf apache-apisix-2.5-src.tgz -C apisix --strip-components 1 && \
+rm -rf apache-apisix-2.5-src.tgz
 
 WORKDIR /opt/sh/apisix
 
 RUN make deps && \
 echo "export PATH=$PATH:/opt/sh/apisix/bin" >> /etc/bashrc
+
+# then install apisix dashboard
+
+
+COPY source /opt/sh
 
 CMD ["/usr/local/bin/dumb-init", "bash", "-vx", "/opt/sh/scripts/start.sh"]

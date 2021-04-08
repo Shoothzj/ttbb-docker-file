@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-bash /opt/sh/servicecomb/start-service-center.sh
-
+DIR="$( cd "$( dirname "$0"  )" && pwd  )"
+bash -x $DIR/start-daemon.sh
 tail -f /dev/null
