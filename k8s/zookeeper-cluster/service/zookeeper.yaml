@@ -7,6 +7,7 @@ spec:
     app: zookeeper
   clusterIP: None
   sessionAffinity: None
+  publishNotReadyAddresses: true
   ports:
     - protocol: TCP
       port: 2181

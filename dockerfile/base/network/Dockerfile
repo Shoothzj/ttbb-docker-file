@@ -5,5 +5,5 @@ LABEL maintainer="shoothzj@gmail.com"
 LABEL description="This is network image"
 
 
-RUN dnf install -y nftables nftables && \
+RUN dnf install -y nftables nftables iptables iproute && \
     dnf clean all
