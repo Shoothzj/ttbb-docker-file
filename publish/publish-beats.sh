@@ -1,3 +1,5 @@
+DIR="$( cd "$( dirname "$0"  )" && pwd  )"
+
 bash $DIR/../build-push.sh filebeat nake
 bash $DIR/../build-push.sh filebeat stand-alone
 

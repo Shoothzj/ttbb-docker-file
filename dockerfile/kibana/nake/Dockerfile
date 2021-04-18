@@ -6,10 +6,12 @@ LABEL maintainer="shoothzj@gmail.com"
 
 WORKDIR /opt/sh
 
-RUN wget https://artifacts.elastic.co/downloads/kibana/kibana-7.12.0-linux-x86_64.tar.gz && \
+ARG version=7.12.0
+
+RUN wget https://artifacts.elastic.co/downloads/kibana/kibana-$version-linux-x86_64.tar.gz && \
 mkdir /opt/sh/kibana && \
-tar -xf kibana-7.12.0-linux-x86_64.tar.gz -C /opt/sh/kibana --strip-components 1 && \
-rm -rf kibana-7.12.0-linux-x86_64.tar.gz && \
+tar -xf kibana-$version-linux-x86_64.tar.gz -C /opt/sh/kibana --strip-components 1 && \
+rm -rf kibana-$version-linux-x86_64.tar.gz && \
 chown -R sh:sh /opt/sh
 
 WORKDIR /opt/sh/kibana

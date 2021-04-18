@@ -52,8 +52,6 @@ bash $DIR/../build-push.sh spark py-learn
 bash $DIR/../build-push.sh telegraf nake
 bash $DIR/../build-push.sh telegraf stand-alone
 
-bash $DIR/../build-push.sh apisix nake
-
 bash $DIR/../build-push.sh etcd nake
 
 bash $DIR/../build-push.sh sysbench nake

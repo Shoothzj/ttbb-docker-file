@@ -1,4 +1,5 @@
 DIR="$( cd "$( dirname "$0"  )" && pwd  )"
+
 bash $DIR/../build-push.sh base latest
 bash $DIR/../build-push.sh base centos
 bash $DIR/../build-push.sh base ubuntu
