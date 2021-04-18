@@ -5,9 +5,11 @@ LABEL maintainer="shoothzj@gmail.com"
 
 WORKDIR /opt/sh
 
-RUN wget https://downloads.apache.org/skywalking/8.4.0/apache-skywalking-apm-es7-8.4.0.tar.gz && \
+ARG version=8.5.0
+
+RUN wget https://downloads.apache.org/skywalking/$version/apache-skywalking-apm-es7-$version.tar.gz && \
 mkdir skywalking && \
-tar -xf apache-skywalking-apm-es7-8.4.0.tar.gz -C skywalking --strip-components 1 && \
-rm -rf apache-skywalking-apm-es7-8.4.0.tar.gz
+tar -xf apache-skywalking-apm-es7-$version.tar.gz -C skywalking --strip-components 1 && \
+rm -rf apache-skywalking-apm-es7-$version.tar.gz
 
 WORKDIR /opt/sh/skywalking

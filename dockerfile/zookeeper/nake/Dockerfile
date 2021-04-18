@@ -5,9 +5,11 @@ LABEL maintainer="shoothzj@gmail.com"
 
 WORKDIR /opt/sh
 
-RUN wget https://downloads.apache.org/zookeeper/zookeeper-3.6.2/apache-zookeeper-3.6.2-bin.tar.gz && \
+ARG version=3.7.0
+
+RUN wget https://downloads.apache.org/zookeeper/zookeeper-$version/apache-zookeeper-$version-bin.tar.gz && \
 mkdir -p zookeeper && \
-tar -xf apache-zookeeper-3.6.2-bin.tar.gz -C /opt/sh/zookeeper --strip-components 1 && \
-rm -rf apache-zookeeper-3.6.2-bin.tar.gz
+tar -xf apache-zookeeper-$version-bin.tar.gz -C /opt/sh/zookeeper --strip-components 1 && \
+rm -rf apache-zookeeper-$version-bin.tar.gz
 
 WORKDIR /opt/sh/zookeeper

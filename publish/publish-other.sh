@@ -1,8 +1,5 @@
 DIR="$( cd "$( dirname "$0"  )" && pwd  )"
 
-bash $DIR/../build-push.sh filebeat nake
-bash $DIR/../build-push.sh filebeat stand-alone
-
 bash $DIR/../build-push.sh flink nake
 bash $DIR/../build-push.sh flink stand-alone
 bash $DIR/../build-push.sh flink master
@@ -26,9 +23,6 @@ bash $DIR/../build-push.sh kapacitor nake
 bash $DIR/../build-push.sh kapacitor stand-alone
 
 bash $DIR/../build-push.sh mariadb nake
-
-bash $DIR/../build-push.sh metricbeat nake
-bash $DIR/../build-push.sh metricbeat stand-alone
 
 bash $DIR/../build-push.sh mongo nake
 bash $DIR/../build-push.sh mongo stand-alone

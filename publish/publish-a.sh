@@ -1,6 +1,7 @@
 DIR="$( cd "$( dirname "$0"  )" && pwd  )"
 bash $DIR/publish-base.sh
 bash $DIR/publish-apollo.sh
+bash $DIR/publish-beats.sh
 bash $DIR/publish-bookkeeper.sh
 bash $DIR/publish-cassandra.sh
 bash $DIR/publish-chronograf.sh
@@ -18,6 +19,7 @@ bash $DIR/publish-integrate.sh
 bash $DIR/publish-kibana.sh
 bash $DIR/publish-kong.sh
 bash $DIR/publish-logstash.sh
+bash $DIR/publish-minio.sh
 bash $DIR/publish-mysql.sh
 bash $DIR/publish-nginx.sh
 bash $DIR/publish-other.sh

@@ -3,9 +3,11 @@ FROM ttbb/base
 
 WORKDIR /opt/sh
 
-RUN wget https://dl.grafana.com/oss/release/grafana-7.5.0.linux-amd64.tar.gz && \
+ARG version=7.5.4
+
+RUN wget https://dl.grafana.com/oss/release/grafana-$version.linux-amd64.tar.gz && \
 mkdir grafana && \
-tar -xf grafana-7.5.0.linux-amd64.tar.gz -C /opt/sh/grafana --strip-components 1 && \
-rm -rf grafana-7.5.0.linux-amd64.tar.gz
+tar -xf grafana-$version.linux-amd64.tar.gz -C /opt/sh/grafana --strip-components 1 && \
+rm -rf grafana-$version.linux-amd64.tar.gz
 
 WORKDIR /opt/sh/grafana
