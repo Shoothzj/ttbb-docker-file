@@ -1,4 +1,5 @@
-#current version ttbb/skywalking:nake
+# docker run -p 8080:8080 -p 11800:11800 -p 12800:12800 -it ttbb/skywalking:nake bash
+# winpty docker run -p 8080:8080 -p 11800:11800 -p 12800:12800 -it ttbb/skywalking:nake bash
 FROM ttbb/base:jdk11
 
 LABEL maintainer="shoothzj@gmail.com"

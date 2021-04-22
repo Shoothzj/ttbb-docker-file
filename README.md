@@ -12,6 +12,10 @@
 ### GRAFANA_SMTP_FROM_ADDRESS
 ### GRAFANA_SMTP_FROM_NAME
 
+## skywalking
+### SW_STORAGE_ES_CLUSTER_NODES
+Skywalking连接的es集群地址
+
 
 ## dockerfile
 

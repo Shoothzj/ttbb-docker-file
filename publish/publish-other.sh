@@ -39,13 +39,6 @@ bash $DIR/../build-push.sh node-exporter stand-alone
 bash $DIR/../build-push.sh rabbitmq nake
 bash $DIR/../build-push.sh rabbitmq stand-alone
 
-bash $DIR/../build-push.sh redis nake
-bash $DIR/../build-push.sh redis exporter
-
-bash $DIR/../build-push.sh skywalking nake
-bash $DIR/../build-push.sh skywalking stand-alone
-bash $DIR/../build-push.sh skywalking es7
-
 bash $DIR/../build-push.sh spark stand-alone
 bash $DIR/../build-push.sh spark py-learn
 

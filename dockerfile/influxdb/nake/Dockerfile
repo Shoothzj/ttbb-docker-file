@@ -3,13 +3,13 @@ FROM ttbb/base
 
 WORKDIR /opt/sh
 
-ARG version=2.0.4
+ARG download=2.0.4-linux-amd64
 
-RUN wget https://dl.influxdata.com/influxdb/releases/influxdb2-$version_linux_amd64.tar.gz  && \
+RUN wget https://dl.influxdata.com/influxdb/releases/influxdb2-$download.tar.gz  && \
 mkdir -p /opt/sh/influxdb && \
-tar -xf /opt/sh/influxdb2-$version_linux_amd64.tar.gz -C /opt/sh/influxdb --strip-components 1 && \
+tar -xf /opt/sh/influxdb2-$download.tar.gz -C /opt/sh/influxdb --strip-components 1 && \
 chown -R sh:sh /opt/sh && \
-rm -rf /opt/sh/influxdb2-$version_linux_amd64.tar.gz && \
+rm -rf /opt/sh/influxdb2-$download.tar.gz && \
 echo "export PATH=$PATH:/opt/sh/influxdb" >> /etc/bashrc
 
 WORKDIR /opt/sh/influxdb
