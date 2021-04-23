@@ -1,4 +1,4 @@
-cd "$(dirname "$0")"
-
-$KAFKA_HOME/bin/zookeeper-server-start.sh config/zookeeper.properties &
-$KAFKA_HOME/kafka-server-start.sh config/server.properties
+#!/usr/bin/env bash
+DIR="$( cd "$( dirname "$0"  )" && pwd  )"
+bash -x $DIR/start-daemon.sh
+tail -f /dev/null

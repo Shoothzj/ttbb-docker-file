@@ -15,5 +15,6 @@ echo "alias ..='cd ..'" >> /etc/bashrc && \
 echo "alias ...='cd ../..'" >> /etc/bashrc && \
 echo "alias tailf='tail -f'" >> /etc/bashrc && \
 echo "set nu" >> /etc/vimrc && \
+pip3 install configobj && \
 groupadd sh -g 1024 && \
 useradd -r -g sh sh -u 1024 -m -d /home/sh

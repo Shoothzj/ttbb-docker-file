@@ -1,5 +1,6 @@
 # docker run -d ttbb/kafka:stand-alone
 # docker run -p 9092:9092 -d ttbb/kafka:stand-alone
+# docker run -p 9092:9092 -it ttbb/kafka:stand-alone bash
 FROM ttbb/kafka:nake
 
 LABEL maintainer="shoothzj@gmail.com"

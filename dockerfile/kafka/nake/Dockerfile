@@ -1,13 +1,15 @@
-#ttbb/kafka:nake
-FROM ttbb/base:jdk8
+# ttbb/kafka:nake
+FROM ttbb/base:jdk11
 
 LABEL maintainer="shoothzj@gmail.com"
 
 WORKDIR /opt/sh
 
-RUN wget https://downloads.apache.org/kafka/2.7.0/kafka_2.13-2.7.0.tgz && \
+ARG version=2.8.0
+
+RUN wget https://downloads.apache.org/kafka/$version/kafka_2.13-$version.tgz && \
 mkdir /opt/sh/kafka && \
-tar -xf /opt/sh/kafka_2.13-2.7.0.tgz -C /opt/sh/kafka --strip-components 1 && \
-rm -rf kafka_2.13-2.7.0.tgz
+tar -xf /opt/sh/kafka_2.13-$version.tgz -C /opt/sh/kafka --strip-components 1 && \
+rm -rf kafka_2.13-$version.tgz
 
 WORKDIR /opt/sh/kafka
