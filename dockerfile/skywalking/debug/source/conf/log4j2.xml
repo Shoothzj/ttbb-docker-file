@@ -5,33 +5,38 @@
         <Property name="log-path">${sys:oap.logDir}</Property>
     </Properties>
     <Appenders>
-        <RollingFile name="RollingFile" fileName="${log-path}/skywalking-oap-server.log"
-                     filePattern="${log-path}/skywalking-oap-server-%d{yyyy-MM-dd}-%i.log">
+        <RollingFile name="RollingFile" fileName="${log-path}/skywalking-oap-server.log" filePattern="${log-path}/skywalking-oap-server-%d{yyyy-MM-dd}-%i.log">
             <PatternLayout>
                 <pattern>%d - %c - %L [%t] %-5p %x - %m%n</pattern>
             </PatternLayout>
             <Policies>
-                <SizeBasedTriggeringPolicy size="102400KB"/>
+                <SizeBasedTriggeringPolicy size="102400KB" />
             </Policies>
-            <DefaultRolloverStrategy max="30"/>
+            <DefaultRolloverStrategy max="30" />
         </RollingFile>
     </Appenders>
     <Loggers>
-        <logger name="org.eclipse.jetty" level="DEBUG"/>
-        <logger name="org.apache.zookeeper" level="DEBUG"/>
-        <logger name="io.grpc.netty" level="DEBUG"/>
-        <logger name="org.apache.skywalking.oap.server.core.storage.PersistenceTimer" level="ERROR"/>
-        <!-- 忽略指标 -->
-        <logger name="org.apache.skywalking.oap.server.core.analysis.worker.MetricsPersistentWorker" level="ERROR"/>
-        <logger name="org.apache.skywalking.oap.server.core.analysis.worker.MetricsAggregateWorker" level="ERROR"/>
-        <logger name="org.apache.skywalking.oap.server.receiver.jvm.provider.handler.JVMMetricReportServiceHandler" level="ERROR"/>
-        <!-- 忽略存储层 -->
-        <logger name="org.apache.skywalking.oap.server.storage.plugin" level="ERROR"/>
+        <logger name="org.eclipse.jetty" level="DEBUG" />
+        <logger name="org.apache.zookeeper" level="DEBUG" />
+        <logger name="io.grpc.netty" level="DEBUG" />
+        <logger name="org.apache.skywalking.oap.server.core.storage.PersistenceTimer" level="ERROR" />
+        <!-- 忽略jetty内部细节 -->
+        <logger name="org.eclipse.jetty.io" level="ERROR" />
+        <logger name="org.eclipse.jetty.util" level="ERROR" />
         <!-- 忽略SQL执行 -->
-        <logger name="org.apache.skywalking.oap.server.library.client.jdbc.hikaricp" level="ERROR"/>
-        <logger name="com.zaxxer.hikari" level="ERROR"/>
+        <logger name="org.apache.skywalking.oap.server.library.client.jdbc.hikaricp" level="ERROR" />
+        <logger name="com.zaxxer.hikari" level="ERROR" />
+        <!-- 忽略指标 -->
+        <logger name="org.apache.skywalking.oap.server.core.analysis.worker.MetricsPersistentWorker" level="ERROR" />
+        <logger name="org.apache.skywalking.oap.server.core.analysis.worker.MetricsAggregateWorker" level="ERROR" />
+        <logger name="org.apache.skywalking.oap.server.receiver.jvm.provider.handler.JVMMetricReportServiceHandler" level="ERROR" />
+        <!-- 忽略存储层 -->
+        <logger name="org.apache.skywalking.oap.server.storage.plugin" level="ERROR" />
+        <logger name="org.apache.skywalking.oap.server.core.storage.ttl.DataTTLKeeperTimer" level="ERROR" />
+        <!-- 忽略Skywalking threshold -->
+        <logger name="org.apache.skywalking.oap.server.core.analysis.ApdexThresholdConfig" level="ERROR" />
         <Root level="DEBUG">
-            <AppenderRef ref="RollingFile"/>
+            <AppenderRef ref="RollingFile" />
         </Root>
     </Loggers>
 </Configuration>

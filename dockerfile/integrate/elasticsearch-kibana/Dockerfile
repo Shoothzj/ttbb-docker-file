@@ -1,8 +1,8 @@
-# docker run -it -p 5601:5601 -p 9200:9200 -d ttbb/integrate:elasticsearch-kibana
-# docker run -it -p 5601:5601 -p 9200:9200 -d ttbb/integrate:elasticsearch-kibana
-# docker run -it -p 5601:5601 -p 9200:9200 --memory="4g" -d ttbb/integrate:elasticsearch-kibana
-# docker run -it -p 5601:5601 -p 9200:9200 --memory="20g" -d ttbb/integrate:elasticsearch-kibana
-# docker run -it -p 30237:5601 -p 30236:9200 --memory="20g" -d ttbb/integrate:elasticsearch-kibana
+# docker run -p 5601:5601 -p 9200:9200 -d ttbb/integrate:elasticsearch-kibana
+# docker run -p 5601:5601 -p 9200:9200 -d ttbb/integrate:elasticsearch-kibana
+# docker run -p 5601:5601 -p 9200:9200 --memory="4g" -d ttbb/integrate:elasticsearch-kibana
+# docker run -p 5601:5601 -p 9200:9200 --memory="20g" -d ttbb/integrate:elasticsearch-kibana
+# docker run -p 30237:5601 -p 30236:9200 --memory="20g" -d ttbb/integrate:elasticsearch-kibana
 FROM ttbb/elasticsearch:stand-alone AS elasticsearch
 
 FROM ttbb/kibana:stand-alone
