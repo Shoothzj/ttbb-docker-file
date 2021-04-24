@@ -12,6 +12,10 @@
 ### GRAFANA_SMTP_FROM_ADDRESS
 ### GRAFANA_SMTP_FROM_NAME
 
+## kafka
+### KAFKA_ADVERTISE_ADDRESS
+指定Kafka的advertise address
+
 ## skywalking
 ### SW_STORAGE_ES_CLUSTER_NODES
 Skywalking连接的es集群地址
