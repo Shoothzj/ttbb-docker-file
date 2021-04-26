@@ -14,6 +14,8 @@ spec:
       labels:
         app: zookeeper
     spec:
+      hostNetwork: true
+      dnsPolicy: ClusterFirstWithHostNet
       containers:
       - name: zookeeper
         image: ttbb/zookeeper:stand-alone
@@ -34,3 +36,5 @@ spec:
           valueFrom:
             fieldRef:
                 fieldPath: metadata.name
+        - name: PS1
+          value: '[\u@zookeeper@\W]\$ '

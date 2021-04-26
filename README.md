@@ -2,7 +2,9 @@
 存放ttbb的镜像仓库
 
 # 环境变量介绍
-
+## bookkeeper
+### BOOKKEEPER_ADVERTISED_ADDRESS
+bookkeeper建议连接地址
 ## grafana
 ### GRAFANA_SMTP_ENABLED
 ### GRAFANA_SMTP_HOST
@@ -14,7 +16,7 @@
 
 ## kafka
 ### KAFKA_ADVERTISE_ADDRESS
-指定Kafka的advertise address
+Kafka的advertise address
 
 ## skywalking
 ### SW_STORAGE_ES_CLUSTER_NODES

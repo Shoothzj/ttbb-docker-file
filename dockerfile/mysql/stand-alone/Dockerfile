@@ -1,3 +1,5 @@
+# docker run ttbb/mysql:stand-alone
+# docker run -p 3306:3306 ttbb/mysql:stand-alone
 # docker run -p 3306:3306 -d ttbb/mysql:stand-alone
 # winpty docker run -p 3306:3306 -d ttbb/mysql:stand-alone
 FROM ttbb/mysql:nake

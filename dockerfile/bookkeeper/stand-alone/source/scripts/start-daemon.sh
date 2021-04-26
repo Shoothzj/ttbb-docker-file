@@ -1,3 +1,4 @@
-DIR="$( cd "$( dirname "$0"  )" && pwd  )"
-BK_HOME="$( cd "$DIR/../.." && pwd  )"
-$BK_HOME/bin/bookkeeper standalone
+#!/usr/bin/env bash
+python3 $BOOKKEEPER_HOME/hzj/scripts/config_change.py $BOOKKEEPER_HOME
+
+$BOOKKEEPER_HOME/bin/bookkeeper standalone >$BOOKKEEPER_HOME/bookkeeper-normal.log

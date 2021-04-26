@@ -1,4 +1,3 @@
-# 当前版本 ttbb/compile:c
 # docker run -it ttbb/compile:c bash
 FROM ttbb/base
 
