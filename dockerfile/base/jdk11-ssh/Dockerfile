@@ -1,11 +1,11 @@
-#当前版本 ttbb/base:jdk11-ssh
+# docker run -it ttbb/base:jdk11-ssh bash
 FROM ttbb/base:jdk11
 
 LABEL maintainer="shoothzj@gmail.com"
 
 COPY ssh_config /opt/sh/ssh_config
 
-RUN dnf install -y openssh-server && \
+RUN dnf install -y openssh-clients openssh-server && \
     dnf clean all && \
     ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -P ""  && \
     ssh-keygen -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key -P "" && \

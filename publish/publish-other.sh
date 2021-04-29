@@ -8,11 +8,6 @@ bash $DIR/../build-push.sh flink worker
 bash $DIR/../build-push.sh grafana nake
 bash $DIR/../build-push.sh grafana stand-alone
 
-bash $DIR/../build-push.sh hadoop nake
-bash $DIR/../build-push.sh hadoop data
-bash $DIR/../build-push.sh hadoop name
-bash $DIR/../build-push.sh hadoop pseudo-distribute
-
 bash $DIR/../build-push.sh hbase nake
 
 bash $DIR/../build-push.sh kafka nake
@@ -29,6 +24,8 @@ bash $DIR/../build-push.sh mongo stand-alone
 bash $DIR/../build-push.sh mongo config
 bash $DIR/../build-push.sh mongo router
 bash $DIR/../build-push.sh mongo shard
+
+bash $DIR/../build-push.sh pravega nake
 
 bash $DIR/../build-push.sh neo4j nake
 bash $DIR/../build-push.sh neo4j stand-alone

@@ -3,10 +3,12 @@ FROM ttbb/base
 
 COPY source /opt/sh/influxdb/hzj
 
-RUN wget https://dl.influxdata.com/influxdb/releases/influxdb-1.8.4_linux_amd64.tar.gz  && \
+ARG download=1.8.5_linux_amd64
+
+RUN wget https://dl.influxdata.com/influxdb/releases/influxdb-$download.tar.gz  && \
 mkdir -p /opt/sh/influxdb && \
-tar -xf influxdb-1.8.4_linux_amd64.tar.gz -C /opt/sh/influxdb --strip-components 2 && \
-rm -rf influxdb-1.8.4_linux_amd64.tar.gz && \
+tar -xf influxdb-$download.tar.gz -C /opt/sh/influxdb --strip-components 2 && \
+rm -rf influxdb-$download.tar.gz && \
 echo "export PATH=$PATH:/opt/sh/influxdb/usr/bin" >> /etc/bashrc
 
 WORKDIR /opt/sh/influxdb

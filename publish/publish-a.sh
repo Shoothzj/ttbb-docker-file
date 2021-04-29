@@ -14,6 +14,7 @@ bash $DIR/publish-emq.sh
 bash $DIR/publish-etcd.sh
 bash $DIR/publish-flink.sh
 bash $DIR/publish-grafana.sh
+bash $DIR/publish-hadoop.sh
 bash $DIR/publish-influxdb.sh
 bash $DIR/publish-integrate.sh
 bash $DIR/publish-kibana.sh
