@@ -3,3 +3,4 @@ bash $DIR/../build-push.sh compile c
 bash $DIR/../build-push.sh compile jdk8
 bash $DIR/../build-push.sh compile jdk11
 bash $DIR/../build-push.sh compile jdk11-git
+bash $DIR/../build-push.sh compile jdk11-git-mvn
