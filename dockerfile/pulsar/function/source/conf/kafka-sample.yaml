@@ -1,0 +1,8 @@
+configs:
+    bootstrapServers: "kafka-0.kafka:9092"
+    topic: "test"
+    acks: "1"
+    batchSize: "16384"
+    maxRequestSize: "1048576"
+    producerConfigProperties:
+        client.id: "test-pulsar-producer"

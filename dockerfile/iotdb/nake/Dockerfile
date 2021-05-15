@@ -1,11 +1,13 @@
-#current version ttbb/iotdb:nake
+# docker run -it ttbb/iotdb:nake bash
 FROM ttbb/base:jdk8
 
 LABEL maintainer="shoothzj@gmail.com"
 
-RUN wget https://downloads.apache.org/incubator/iotdb/0.10.1-incubating/apache-iotdb-0.10.1-incubating-bin.zip && \
-unzip  apache-iotdb-0.10.1-incubating-bin.zip && \
-mv apache-iotdb-0.10.1-incubating iotdb && \
-echo "export PATH=/opt/sh/iotdb/sbin:${PATH}" >> /etc/bashrc
+ARG version=0.12.0
+ARG download=0.12.0-all-bin
+
+RUN wget https://downloads.apache.org/iotdb/$version/apache-iotdb-$download.zip && \
+unzip apache-iotdb-$download.zip && \
+mv apache-iotdb-$download iotdb
 
 WORKDIR /opt/sh/iotdb

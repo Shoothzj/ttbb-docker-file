@@ -1,9 +1,7 @@
+#!/usr/bin/env bash
 DIR="$( cd "$( dirname "$0"  )" && pwd  )"
 
-bash $DIR/../build-push.sh flink nake
-bash $DIR/../build-push.sh flink stand-alone
-bash $DIR/../build-push.sh flink master
-bash $DIR/../build-push.sh flink worker
+bash $DIR/../build-push.sh bfe nake
 
 bash $DIR/../build-push.sh grafana nake
 bash $DIR/../build-push.sh grafana stand-alone
@@ -24,6 +22,8 @@ bash $DIR/../build-push.sh mongo stand-alone
 bash $DIR/../build-push.sh mongo config
 bash $DIR/../build-push.sh mongo router
 bash $DIR/../build-push.sh mongo shard
+
+bash $DIR/../build-push.sh nifi nake
 
 bash $DIR/../build-push.sh pravega nake
 

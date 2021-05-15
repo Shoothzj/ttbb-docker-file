@@ -6,7 +6,7 @@ LABEL maintainer="shoothzj@gmail.com"
 
 WORKDIR /opt/sh
 
-ARG version=7.12.0
+ARG version=7.12.1
 
 RUN wget https://artifacts.elastic.co/downloads/kibana/kibana-$version-linux-x86_64.tar.gz && \
 mkdir /opt/sh/kibana && \

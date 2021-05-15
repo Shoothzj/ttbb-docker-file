@@ -4,8 +4,10 @@ FROM ttbb/base:latest
 LABEL maintainer="shoothzj@gmail.com"
 LABEL description="This is go base image"
 
-RUN wget https://golang.org/dl/go1.16.3.linux-amd64.tar.gz && \
-    tar -C /usr/local -xzf go1.16.3.linux-amd64.tar.gz && \
+ARG version=1.16.4
+
+RUN wget https://golang.org/dl/go$version.linux-amd64.tar.gz && \
+    tar -C /usr/local -xzf go$version.linux-amd64.tar.gz && \
     ln -s /usr/local/go/bin/go /usr/bin/go && \
     ln -s /usr/local/go/bin/gofmt /usr/bin/gofmt && \
-    rm -rf go1.16.3.linux-amd64.tar.gz
+    rm -rf go$version.linux-amd64.tar.gz

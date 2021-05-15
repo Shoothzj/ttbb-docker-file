@@ -4,11 +4,14 @@ FROM ttbb/base:jdk11
 
 WORKDIR /opt/sh
 
-ARG version=2.7.1
+ENV PULSAR_HOME /opt/sh/pulsar
 
-RUN wget https://archive.apache.org/dist/pulsar/pulsar-$version/apache-pulsar-$version-bin.tar.gz  && \
+ARG version=2.7.1
+ARG download=2.7.1-bin
+
+RUN wget https://archive.apache.org/dist/pulsar/pulsar-$version/apache-pulsar-$donwload.tar.gz  && \
 mkdir -p /opt/sh/pulsar && \
-tar -xf apache-pulsar-$version-bin.tar.gz -C /opt/sh/pulsar --strip-components 1 && \
-rm -rf apache-pulsar-$version-bin.tar.gz
+tar -xf apache-pulsar-$download.tar.gz -C /opt/sh/pulsar --strip-components 1 && \
+rm -rf apache-pulsar-$download.tar.gz
 
 WORKDIR /opt/sh/pulsar
