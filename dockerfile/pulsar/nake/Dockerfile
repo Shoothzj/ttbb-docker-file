@@ -9,7 +9,7 @@ ENV PULSAR_HOME /opt/sh/pulsar
 ARG version=2.7.1
 ARG download=2.7.1-bin
 
-RUN wget https://archive.apache.org/dist/pulsar/pulsar-$version/apache-pulsar-$donwload.tar.gz  && \
+RUN wget https://archive.apache.org/dist/pulsar/pulsar-$version/apache-pulsar-$download.tar.gz  && \
 mkdir -p /opt/sh/pulsar && \
 tar -xf apache-pulsar-$download.tar.gz -C /opt/sh/pulsar --strip-components 1 && \
 rm -rf apache-pulsar-$download.tar.gz

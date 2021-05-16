@@ -15,6 +15,8 @@ bash $DIR/../build-push.sh kafka cluster
 bash $DIR/../build-push.sh kapacitor nake
 bash $DIR/../build-push.sh kapacitor stand-alone
 
+bash $DIR/../build-push.sh keepalived nake
+
 bash $DIR/../build-push.sh mariadb nake
 
 bash $DIR/../build-push.sh mongo nake

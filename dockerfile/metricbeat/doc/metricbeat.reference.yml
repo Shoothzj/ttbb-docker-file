@@ -2,7 +2,7 @@
 
 # This file is a full configuration example documenting all non-deprecated
 # options in comments. For a shorter configuration example, that contains only
-# the most common options, please see packetbeat.yml in the same directory.
+# the most common options, please see metricbeat.yml in the same directory.
 #
 # You can find the full configuration reference here:
 # https://www.elastic.co/guide/en/beats/metricbeat/index.html
@@ -142,15 +142,6 @@ metricbeat.modules:
   # Filter systemd services based on a name pattern
   #service.pattern_filter: ["ssh*", "nfs*"]
 
-#------------------------------- ActiveMQ Module -------------------------------
-- module: activemq
-  metricsets: ['broker', 'queue', 'topic']
-  period: 10s
-  hosts: ['localhost:8161']
-  path: '/api/jolokia/?ignoreErrors=true&canonicalNaming=false'
-  username: admin # default username
-  password: admin # default password
-
 #------------------------------ Aerospike Module ------------------------------
 - module: aerospike
   metricsets: ["namespace"]
@@ -175,190 +166,6 @@ metricbeat.modules:
 
   # Password of hosts. Empty by default
   #password: password
-
-#------------------------------ App Search Module ------------------------------
-- module: appsearch
-  metricsets: ["stats"]
-  enabled: true
-  period: 10s
-  hosts: ["http://localhost:3002"]
-  #username: "elastic"
-  #password: "changeme"
-
-#--------------------------------- AWS Module ---------------------------------
-- module: aws
-  period: 300s
-  credential_profile_name: test-mb
-  metricsets:
-    - ec2
-  tags_filter:
-    - key: "Organization"
-      value: "Engineering"
-- module: aws
-  period: 300s
-  credential_profile_name: test-mb
-  metricsets:
-    - sqs
-  regions:
-    - us-west-1
-- module: aws
-  period: 86400s
-  metricsets:
-    - s3_request
-    - s3_daily_storage
-  access_key_id: '${AWS_ACCESS_KEY_ID:""}'
-  secret_access_key: '${AWS_SECRET_ACCESS_KEY:""}'
-  session_token: '${AWS_SESSION_TOKEN:""}'
-- module: aws
-  period: 300s
-  credential_profile_name: test-mb
-  metricsets:
-    - cloudwatch
-  metrics:
-    - namespace: AWS/EC2
-      name: ["CPUUtilization"]
-      dimensions:
-        - name: InstanceId
-          value: i-0686946e22cf9494a
-    - namespace: AWS/EBS
-    - namespace: AWS/ELB
-      resource_type: elasticloadbalancing
-      tags:
-        - key: "Organization"
-          value: "Engineering"
-- module: aws
-  period: 60s
-  credential_profile_name: test-mb
-  tags_filter:
-    - key: "dept"
-      value: "eng"
-  metricsets:
-    - elb
-    - natgateway
-    - rds
-    - transitgateway
-    - usage
-    - vpn
-
-#----------------------------- AWS Fargate Module -----------------------------
-- module: awsfargate
-  period: 10s
-  metricsets:
-    - task_stats
-
-#-------------------------------- Azure Module --------------------------------
-- module: azure
-  metricsets:
-  - monitor
-  enabled: true
-  period: 300s
-  client_id: '${AZURE_CLIENT_ID:""}'
-  client_secret: '${AZURE_CLIENT_SECRET:""}'
-  tenant_id: '${AZURE_TENANT_ID:""}'
-  subscription_id: '${AZURE_SUBSCRIPTION_ID:""}'
-  resources:
-    - resource_query: "resourceType eq 'Microsoft.DocumentDb/databaseAccounts'"
-      metrics:
-      - name: ["DataUsage", "DocumentCount", "DocumentQuota"]
-        namespace: "Microsoft.DocumentDb/databaseAccounts"
-
-- module: azure
-  metricsets:
-  - compute_vm
-  enabled: true
-  period: 300s
-  client_id: '${AZURE_CLIENT_ID:""}'
-  client_secret: '${AZURE_CLIENT_SECRET:""}'
-  tenant_id: '${AZURE_TENANT_ID:""}'
-  subscription_id: '${AZURE_SUBSCRIPTION_ID:""}'
-
-- module: azure
-  metricsets:
-  - compute_vm_scaleset
-  enabled: true
-  period: 300s
-  client_id: '${AZURE_CLIENT_ID:""}'
-  client_secret: '${AZURE_CLIENT_SECRET:""}'
-  tenant_id: '${AZURE_TENANT_ID:""}'
-  subscription_id: '${AZURE_SUBSCRIPTION_ID:""}'
-
-- module: azure
-  metricsets:
-  - storage
-  enabled: true
-  period: 300s
-  client_id: '${AZURE_CLIENT_ID:""}'
-  client_secret: '${AZURE_CLIENT_SECRET:""}'
-  tenant_id: '${AZURE_TENANT_ID:""}'
-  subscription_id: '${AZURE_SUBSCRIPTION_ID:""}'
-
-- module: azure
-  metricsets:
-  - container_instance
-  enabled: true
-  period: 300s
-  client_id: '${AZURE_CLIENT_ID:""}'
-  client_secret: '${AZURE_CLIENT_SECRET:""}'
-  tenant_id: '${AZURE_TENANT_ID:""}'
-  subscription_id: '${AZURE_SUBSCRIPTION_ID:""}'
-
-- module: azure
-  metricsets:
-  - container_service
-  enabled: true
-  period: 300s
-  client_id: '${AZURE_CLIENT_ID:""}'
-  client_secret: '${AZURE_CLIENT_SECRET:""}'
-  tenant_id: '${AZURE_TENANT_ID:""}'
-  subscription_id: '${AZURE_SUBSCRIPTION_ID:""}'
-
-- module: azure
-  metricsets:
-  - container_registry
-  enabled: true
-  period: 300s
-  client_id: '${AZURE_CLIENT_ID:""}'
-  client_secret: '${AZURE_CLIENT_SECRET:""}'
-  tenant_id: '${AZURE_TENANT_ID:""}'
-  subscription_id: '${AZURE_SUBSCRIPTION_ID:""}'
-
-- module: azure
-  metricsets:
-  - database_account
-  enabled: true
-  period: 300s
-  client_id: '${AZURE_CLIENT_ID:""}'
-  client_secret: '${AZURE_CLIENT_SECRET:""}'
-  tenant_id: '${AZURE_TENANT_ID:""}'
-  subscription_id: '${AZURE_SUBSCRIPTION_ID:""}'
-
-- module: azure
-  metricsets:
-    - billing
-  enabled: true
-  period: 24h
-  client_id: '${AZURE_CLIENT_ID:""}'
-  client_secret: '${AZURE_CLIENT_SECRET:""}'
-  tenant_id: '${AZURE_TENANT_ID:""}'
-  subscription_id: '${AZURE_SUBSCRIPTION_ID:""}'
-
-- module: azure
-  metricsets:
-    - app_insights
-  enabled: true
-  period: 300s
-  application_id: ''
-  api_key: ''
-  metrics:
-    - id: ["requests/count", "requests/duration"]
-
-- module: azure
-  metricsets:
-    - app_state
-  enabled: true
-  period: 300s
-  application_id: ''
-  api_key: ''
 
 #--------------------------------- Beat Module ---------------------------------
 - module: beat
@@ -394,32 +201,6 @@ metricbeat.modules:
   #username: "user"
   #password: "secret"
 
-#----------------------------- Cloudfoundry Module -----------------------------
-- module: cloudfoundry
-  metricsets:
-    - container
-    - counter
-    - value
-  enabled: true
-  api_address: '${CLOUDFOUNDRY_API_ADDRESS:""}'
-  doppler_address: '${CLOUDFOUNDRY_DOPPLER_ADDRESS:""}'
-  uaa_address: '${CLOUDFOUNDRY_UAA_ADDRESS:""}'
-  rlp_address: '${CLOUDFOUNDRY_RLP_ADDRESS:""}'
-  client_id: '${CLOUDFOUNDRY_CLIENT_ID:""}'
-  client_secret: '${CLOUDFOUNDRY_CLIENT_SECRET:""}'
-  shard_id: metricbeat
-  version: v1
-
-#----------------------------- CockroachDB Module -----------------------------
-- module: cockroachdb
-  metricsets: ['status']
-  period: 10s
-  hosts: ['localhost:8080']
-
-  # This module uses the Prometheus collector metricset, all
-  # the options for this metricset are also available here.
-  #metrics_path: /_status/vars
-
 #-------------------------------- Consul Module --------------------------------
 - module: consul
   metricsets:
@@ -428,12 +209,6 @@ metricbeat.modules:
   period: 10s
   hosts: ["localhost:8500"]
 
-
-#------------------------------- Coredns Module -------------------------------
-- module: coredns
-  metricsets: ["stats"]
-  period: 10s
-  hosts: ["localhost:9153"]
 
 #------------------------------ Couchbase Module ------------------------------
 - module: couchbase
@@ -460,6 +235,7 @@ metricbeat.modules:
     #- "image"
     - "memory"
     - "network"
+    #- "network_summary"
   hosts: ["unix:///var/run/docker.sock"]
   period: 10s
   enabled: true
@@ -516,61 +292,6 @@ metricbeat.modules:
   metricsets: ["leader", "self", "store"]
   period: 10s
   hosts: ["localhost:2379"]
-
-#------------------------ Google Cloud Platform Module ------------------------
-- module: gcp
-  metricsets:
-    - compute
-  region: "us-"
-  project_id: "your project id"
-  credentials_file_path: "your JSON credentials file path"
-  exclude_labels: false
-  period: 1m
-
-- module: gcp
-  metricsets:
-    - pubsub
-    - loadbalancing
-  zone: "us-central1-a"
-  region: "us-central1"
-  project_id: "your project id"
-  credentials_file_path: "your JSON credentials file path"
-  exclude_labels: false
-  period: 1m
-
-- module: gcp
-  metricsets:
-    - storage
-  project_id: "your project id"
-  credentials_file_path: "your JSON credentials file path"
-  exclude_labels: false
-  period: 5m
-
-- module: gcp
-  metricsets:
-    - metrics
-  project_id: "your project id"
-  credentials_file_path: "your JSON credentials file path"
-  exclude_labels: false
-  period: 1m
-  metrics:
-    - aligner: ALIGN_NONE
-      service: compute
-      metric_types:
-        - "instance/cpu/reserved_cores"
-        - "instance/cpu/usage_time"
-        - "instance/cpu/utilization"
-        - "instance/uptime"
-
-- module: gcp
-  metricsets:
-    - billing
-  period: 24h
-  project_id: "your project id"
-  credentials_file_path: "your JSON credentials file path"
-  dataset_id: "dataset id"
-  table_pattern: "table pattern"
-  cost_type: "regular"
 
 #-------------------------------- Golang Module --------------------------------
 - module: golang
@@ -652,78 +373,6 @@ metricbeat.modules:
   #    fields: # added to the the response in root. overwrites existing fields
   #      key: "value"
 
-#-------------------------------- IBM MQ Module --------------------------------
-- module: ibmmq
-  metricsets: ['qmgr']
-  period: 10s
-  hosts: ['localhost:9157']
-
-  # This module uses the Prometheus collector metricset, all
-  # the options for this metricset are also available here.
-  metrics_path: /metrics
-
-#--------------------------------- IIS Module ---------------------------------
-- module: iis
-  metricsets:
-    - webserver
-    - website
-    - application_pool
-  enabled: true
-  period: 10s
-
- # filter on application pool names
- # application_pool.name: []
-
-#-------------------------------- Istio Module --------------------------------
-# Istio mesh. To collect all Mixer-generated metrics
-- module: istio
-  metricsets: ["mesh"]
-  period: 10s
-  # use istio-telemetry.istio-system:42422, when deploying Metricbeat in a kubernetes cluster as Pod or Daemonset
-  hosts: ["localhost:42422"]
-
-# Istio mixer. To monitor Mixer itself.
-- module: istio
-  metricsets: ["mixer"]
-  period: 10s
-  # use istio-telemetry.istio-system:15014, when deploying Metricbeat in a kubernetes cluster as Pod or Daemonset
-  hosts: ["localhost:15014"]
-
-# Istio galley. To collect all Galley-generated metrics
-- module: istio
-  metricsets: ["galley"]
-  period: 10s
-  # use istio-galley.istio-system:15014, when deploying Metricbeat in a kubernetes cluster as Pod or Daemonset
-  hosts: ["localhost:15014"]
-
-# Istio pilot. To collect all Pilot-generated metrics.
-- module: istio
-  metricsets: ["pilot"]
-  period: 10s
-  # use istio-pilot.istio-system:15014, when deploying Metricbeat in a kubernetes cluster as Pod or Daemonset
-  hosts: ["localhost:15014"]
-
-# Istio citadel. To collect all Citadel-generated metrics.
-- module: istio
-  metricsets: ["citadel"]
-  period: 10s
-  # use istio-pilot.istio-system:15014, when deploying Metricbeat in a kubernetes cluster as Pod or Daemonset
-  hosts: ["localhost:15014"]
-
-# Istio istiod to monitor the Istio Daemon for versions after 1.5 of Istio.
-- module: istio
-  metricsets: ['istiod']
-  period: 10s
-  # use istiod.istio-system:15014, when deploying Metricbeat in a kubernetes cluster as Pod or Daemonset
-  hosts: ['localhost:15014']
-
-# Istio proxy to monitor Envoy sidecars for versions after 1.5 of Istio.
-- module: istio
-  metricsets: ['proxy']
-  period: 10s
-  # it's recommended to deploy this metricset with autodiscovery, see metricset's docs for more info
-  hosts: ['localhost:15090']
-
 #------------------------------- Jolokia Module -------------------------------
 - module: jolokia
   #metricsets: ["jmx"]
@@ -787,6 +436,10 @@ metricbeat.modules:
   # SASL authentication
   #username: ""
   #password: ""
+
+  # SASL authentication mechanism used. Can be one of PLAIN, SCRAM-SHA-256 or SCRAM-SHA-512.
+  # Defaults to PLAIN when `username` and `password` are configured.
+  #sasl.mechanism: ''
 
 # Metrics collected from a Kafka broker using Jolokia
 #- module: kafka
@@ -992,17 +645,6 @@ metricbeat.modules:
   # Password to use when connecting to MongoDB. Empty by default.
   #password: pass
 
-#-------------------------------- MSSQL Module --------------------------------
-- module: mssql
-  metricsets:
-    - "transaction_log"
-    - "performance"
-  hosts: ["sqlserver://localhost"]
-  username: domain\username
-  password: verysecurepassword
-  period: 10s
-
-
 #-------------------------------- Munin Module --------------------------------
 - module: munin
   metricsets: ["node"]
@@ -1074,30 +716,6 @@ metricbeat.modules:
   # Path to server status. Default nginx_status
   server_status_path: "nginx_status"
 
-#----------------------------- Openmetrics Module -----------------------------
-- module: openmetrics
-  metricsets: ['collector']
-  period: 10s
-  hosts: ['localhost:9090']
-
-  # This module uses the Prometheus collector metricset, all
-  # the options for this metricset are also available here.
-  metrics_path: /metrics
-  metrics_filters:
-    include: []
-    exclude: []
-
-#-------------------------------- Oracle Module --------------------------------
-- module: oracle
-  metricsets: ["tablespace", "performance"]
-  enabled: true
-  period: 10s
-  hosts: ["user:pass@0.0.0.0:1521/ORCLPDB1.localdomain"]
-
-  # username: ""
-  # password: ""
-
-
 #------------------------------- PHP_FPM Module -------------------------------
 - module: php_fpm
   metricsets:
@@ -1121,6 +739,10 @@ metricbeat.modules:
     # Stats about every PostgreSQL process
     - activity
 
+    # Stats about every statement executed in the server. It requires the
+    # `pg_stats_statement` library to be configured in the server.
+    #- statement
+
   period: 10s
 
   # The host must be passed as PostgreSQL URL. Example:
@@ -1134,77 +756,6 @@ metricbeat.modules:
 
   # Password to use when connecting to PostgreSQL. Empty by default.
   #password: pass
-
-#----------------------- Prometheus Typed Metrics Module -----------------------
-- module: prometheus
-  period: 10s
-  hosts: ["localhost:9090"]
-  metrics_path: /metrics
-  #metrics_filters:
-  #  include: []
-  #  exclude: []
-  #username: "user"
-  #password: "secret"
-
-  # This can be used for service account based authorization:
-  #bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
-  #ssl.certificate_authorities:
-  #  - /var/run/secrets/kubernetes.io/serviceaccount/service-ca.crt
-
-  # Use Elasticsearch histogram type to store histograms (beta, default: false)
-  # This will change the default layout and put metric type in the field name
-  #use_types: true
-
-  # Store counter rates instead of original cumulative counters (experimental, default: false)
-  #rate_counters: true
-
-# Metrics sent by a Prometheus server using remote_write option
-#- module: prometheus
-#  metricsets: ["remote_write"]
-#  host: "localhost"
-#  port: "9201"
-
-  # Secure settings for the server using TLS/SSL:
-  #ssl.certificate: "/etc/pki/server/cert.pem"
-  #ssl.key: "/etc/pki/server/cert.key"
-
-  # Use Elasticsearch histogram type to store histograms (beta, default: false)
-  # This will change the default layout and put metric type in the field name
-  #use_types: true
-
-  # Store counter rates instead of original cumulative counters (experimental, default: false)
-  #rate_counters: true
-
-  # Define patterns for counter and histogram types so as to identify metrics' types according to these patterns
-  #types_patterns:
-  #  counter_patterns: []
-  #  histogram_patterns: []
-
-# Metrics that will be collected using a PromQL
-#- module: prometheus
-#  metricsets: ["query"]
-#  hosts: ["localhost:9090"]
-#  period: 10s
-#  queries:
-#  - name: "instant_vector"
-#    path: "/api/v1/query"
-#    params:
-#      query: "sum(rate(prometheus_http_requests_total[1m]))"
-#  - name: "range_vector"
-#    path: "/api/v1/query_range"
-#    params:
-#      query: "up"
-#      start: "2019-12-20T00:00:00.000Z"
-#      end:  "2019-12-21T00:00:00.000Z"
-#      step: 1h
-#  - name: "scalar"
-#    path: "/api/v1/query"
-#    params:
-#      query: "100"
-#  - name: "string"
-#    path: "/api/v1/query"
-#    params:
-#      query: "some_value"
 
 #------------------------------ Prometheus Module ------------------------------
 # Metrics collected from a Prometheus endpoint
@@ -1306,50 +857,6 @@ metricbeat.modules:
 
   # Redis AUTH password. Empty by default.
   #password: foobared
-
-#--------------------------- Redis Enterprise Module ---------------------------
-- module: redisenterprise
-  metricsets:
-    - node
-    - proxy
-  period: 1m
-
-  # Metrics endpoint
-  hosts: ["https://127.0.0.1:8070/"]
-
-#--------------------------------- SQL Module ---------------------------------
-- module: sql
-  metricsets:
-    - query
-  period: 10s
-  hosts: ["user=myuser password=mypassword dbname=mydb sslmode=disable"]
-
-  driver: "postgres"
-  sql_query: "select now()"
-  sql_response_format: table
-
-#--------------------------------- Stan Module ---------------------------------
-- module: stan
-  metricsets: ["stats", "channels", "subscriptions"]
-  period: 60s
-  hosts: ["localhost:8222"]
-  #stats.metrics_path: "/streaming/serverz"
-  #channels.metrics_path: "/streaming/channelsz"
-  #subscriptions.metrics_path: "/streaming/channelsz" # we retrieve streaming subscriptions with a detailed query param to the channelsz endpoint
-
-#-------------------------------- Statsd Module --------------------------------
-- module: statsd
-  host: "localhost"
-  port: "8125"
-  enabled: false
-  #ttl: "30s"
-
-#-------------------------------- Tomcat Module --------------------------------
-- module: tomcat
-  metricsets: ['threading', 'cache', 'memory', 'requests']
-  period: 10s
-  hosts: ['localhost:8080']
-  path: "/jolokia/?ignoreErrors=true&canonicalNaming=false"
 
 #------------------------------- Traefik Module -------------------------------
 - module: traefik
@@ -2394,7 +1901,9 @@ output.elasticsearch:
 
   # Permissions to use for file creation. The default is 0600.
   #permissions: 0600
-
+  
+  # Configure automatic file rotation on every startup. The default is true.
+  #rotate_on_startup: true
 # ------------------------------- Console Output -------------------------------
 #output.console:
   # Boolean flag to enable or disable the output module.
@@ -2603,6 +2112,10 @@ setup.kibana:
   # Optional Kibana space ID.
   #space.id: ""
 
+  # Custom HTTP headers to add to each request
+  #headers:
+  #  X-My-Header: Contents of the header
+
   # Use SSL settings for HTTPS.
   #ssl.enabled: true
 
@@ -2721,6 +2234,11 @@ logging.files:
   # Rotate existing logs on startup rather than appending to the existing
   # file. Defaults to true.
   # rotateonstartup: true
+
+  # Rotated files are either suffixed with a number e.g. metricbeat.1 when
+  # renamed during rotation. Or when set to date, the date is added to
+  # the end of the file. On rotation a new file is created, older files are untouched.
+  #suffix: count
 
 # Set to true to log messages in JSON format.
 #logging.json: false

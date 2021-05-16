@@ -15,7 +15,7 @@ echo "alias ll='ls -al'" >> /etc/bashrc && \
 echo "alias ..='cd ..'" >> /etc/bashrc && \
 echo "alias ...='cd ../..'" >> /etc/bashrc && \
 echo "alias tailf='tail -f'" >> /etc/bashrc && \
-echo "dnf updateinfo" >> /etc/bashrc && \
+echo "(dnf updateinfo >/dev/null 2>&1 &)" >> /etc/bashrc && \
 echo "set nu" >> /etc/vimrc && \
 pip3 install configobj && \
 groupadd sh -g 1024 && \
