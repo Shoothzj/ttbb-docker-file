@@ -5,9 +5,11 @@ LABEL maintainer="shoothzj@gmail.com"
 
 WORKDIR /opt/sh
 
-RUN wget http://download.redis.io/releases/redis-6.0.9.tar.gz && \
+ARG version=6.2.3
+
+RUN wget -q http://download.redis.io/releases/redis-$version.tar.gz && \
 mkdir redis && \
-tar -xf redis-6.0.9.tar.gz -C redis --strip-components 1 && \
+tar -xf redis-$version.tar.gz -C redis --strip-components 1 && \
 cd redis && \
 make
 
@@ -21,5 +23,7 @@ COPY --from=compiler /opt/sh/redis/src/redis-server /opt/sh/redis/redis-server
 COPY --from=compiler /opt/sh/redis/src/redis-benchmark /opt/sh/redis/redis-benchmark
 COPY --from=compiler /opt/sh/redis/src/redis-check-rdb /opt/sh/redis/redis-check-rdb
 COPY --from=compiler /opt/sh/redis/src/redis-check-aof /opt/sh/redis/redis-check-aof
+
+ENV REDIS_HOME /opt/sh/redis
 
 WORKDIR /opt/sh/redis

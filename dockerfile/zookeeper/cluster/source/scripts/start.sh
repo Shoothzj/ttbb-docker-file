@@ -1,3 +1,5 @@
+#!/bin/bash
+
 mkdir -p /opt/sh/zookeeper/data
 
 # 先获取环境变量ZOOKEEPER_NUM

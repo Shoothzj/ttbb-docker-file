@@ -4,7 +4,7 @@ FROM ttbb/base
 
 WORKDIR /opt/sh
 
-ARG version=2.26.0
+ARG version=2.27.0
 
 RUN wget https://github.com/prometheus/prometheus/releases/download/v$version/prometheus-$version.linux-amd64.tar.gz  && \
 mkdir -p prometheus && \
