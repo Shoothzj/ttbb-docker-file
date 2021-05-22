@@ -9,6 +9,4 @@ COPY source /opt/sh/pulsar/hzj
 # 低内存占用运行
 ENV PULSAR_MEM "-Xms128M -Xmx128M -XX:MaxDirectMemorySize=128M"
 
-ENV OPTS "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:30302"
-
 CMD ["/usr/local/bin/dumb-init", "bash", "-vx", "/opt/sh/pulsar/hzj/scripts/start.sh"]
