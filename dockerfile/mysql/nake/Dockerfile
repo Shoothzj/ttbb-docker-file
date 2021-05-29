@@ -13,3 +13,5 @@ chmod 777 -R /var/log && \
 chown -R sh:sh /var/lib/mysql* && \
 chown -R sh:sh /run/mysqld && \
 mysqld --initialize-insecure --user=root
+
+WORKDIR /opt/sh/mysql

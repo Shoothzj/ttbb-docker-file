@@ -42,6 +42,9 @@ bash $DIR/../build-push.sh rabbitmq stand-alone
 bash $DIR/../build-push.sh spark stand-alone
 bash $DIR/../build-push.sh spark py-learn
 
+bash $DIR/../build-push.sh superset nake
+bash $DIR/../build-push.sh superset stand-alone
+
 bash $DIR/../build-push.sh telegraf nake
 bash $DIR/../build-push.sh telegraf stand-alone
 
