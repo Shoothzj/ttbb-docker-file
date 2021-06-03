@@ -30,4 +30,5 @@ bash $DIR/publish-pulsar.sh
 bash $DIR/publish-python.sh
 bash $DIR/publish-redis.sh
 bash $DIR/publish-skywalking.sh
+bash $DIR/publish-trino.sh
 bash $DIR/publish-zookeeper.sh

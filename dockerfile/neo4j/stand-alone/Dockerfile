@@ -1,4 +1,4 @@
-#current version ttbb/neo4j:stand-alone
+# docker run ttbb/neo4j:stand-alone
 FROM ttbb/neo4j:nake
 
 LABEL maintainer="shoothzj@gmail.com"
