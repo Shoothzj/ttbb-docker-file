@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 DIR="$( cd "$( dirname "$0"  )" && pwd  )"
 HZJ_HOME="$( cd "$DIR/.." && pwd  )"
 ES_HOME="$( cd "$DIR/../.." && pwd  )"

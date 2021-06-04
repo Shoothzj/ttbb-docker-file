@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 cat /opt/sh/conf/add.conf >> /etc/thingsboard/conf/thingsboard.conf
 cp /opt/sh/conf/thingsboard.yml /etc/thingsboard/conf/thingsboard.yml
 /usr/share/thingsboard/bin/install/install.sh --loadDemo
