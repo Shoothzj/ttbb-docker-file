@@ -12,7 +12,7 @@ mkdir -p /opt/sh/trino && \
 tar -xf trino-server-$version.tar.gz -C /opt/sh/trino --strip-components 1 && \
 rm -rf trino-server-$version.tar.gz && \
 ln -s /usr/bin/python3 /usr/bin/python && \
-wget https://repo1.maven.org/maven2/io/trino/trino-cli/358/trino-cli-$download.jar && \
+wget https://repo1.maven.org/maven2/io/trino/trino-cli/$version/trino-cli-$download.jar && \
 mv trino-cli-$download.jar /usr/bin/trino && \
 chmod +x /usr/bin/trino
 
