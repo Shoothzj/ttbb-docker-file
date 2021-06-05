@@ -3,7 +3,7 @@ FROM ttbb/base
 
 LABEL maintainer="shoothzj@gmail.com"
 
-ARG download=7.12.1-linux-x86_64
+ARG download=7.13.1-linux-x86_64
 
 RUN wget https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-$download.tar.gz && \
 mkdir /opt/sh/metricbeat && \

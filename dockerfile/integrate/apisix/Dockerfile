@@ -7,6 +7,9 @@ COPY --from=etcd /opt/sh/etcd/etcd /usr/bin/etcd
 COPY --from=etcd /opt/sh/etcd/etcdctl /usr/bin/etcdctl
 COPY --from=openresty /opt/sh/openresty /opt/sh/openresty
 
+ARG version=2.6
+ARG download=2.6-src
+
 # then openresty
 WORKDIR /opt/sh
 
@@ -20,10 +23,10 @@ dnf clean all
 # then install apisix
 WORKDIR /opt/sh
 
-RUN wget https://downloads.apache.org/apisix/2.5/apache-apisix-2.5-src.tgz  && \
+RUN wget https://downloads.apache.org/apisix/$version/apache-apisix-$download.tgz  && \
 mkdir -p apisix && \
-tar -xf apache-apisix-2.5-src.tgz -C apisix --strip-components 1 && \
-rm -rf apache-apisix-2.5-src.tgz
+tar -xf apache-apisix-$download.tgz -C apisix && \
+rm -rf apache-apisix-$download.tgz
 
 WORKDIR /opt/sh/apisix
 

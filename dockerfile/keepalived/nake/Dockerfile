@@ -11,7 +11,7 @@ RUN wget https://www.keepalived.org/software/keepalived-$version.tar.gz && \
 mkdir /opt/sh/keepalived && \
 tar -xf keepalived-$version.tar.gz -C /opt/sh/keepalived --strip-components 1 && \
 rm -rf keepalived-$version.tar.gz && \
-dnf install -y openssl-devel iptables-dev libipset-dev libnfnetlink-dev libnl-3-dev libnl-genl-3-dev libnl-route-3-dev libssl-dev
+dnf install -y openssl-devel
 
 WORKDIR /opt/sh/keepalived
 

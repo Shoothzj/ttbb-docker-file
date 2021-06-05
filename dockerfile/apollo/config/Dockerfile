@@ -5,7 +5,10 @@ WORKDIR /opt/sh/apollo-config
 
 COPY source /opt/sh/apollo-config/hzj
 
-RUN wget https://github.com/ctripcorp/apollo/releases/download/v1.8.1/apollo-configservice-1.8.1-github.zip  && \
+ARG version=1.8.1
+ARG download=1.8.1-github
+
+RUN wget https://github.com/ctripcorp/apollo/releases/download/v$version/apollo-configservice-1.8.1-github.zip  && \
 unzip apollo-configservice-1.8.1-github.zip && \
 rm -rf apollo-configservice-1.8.1-github.zip && \
 cp hzj/conf/apollo-config.properties config/application-github.properties && \

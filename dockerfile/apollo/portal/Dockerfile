@@ -6,9 +6,12 @@ WORKDIR /opt/sh/apollo-portal
 
 COPY source /opt/sh/apollo-portal/hzj
 
-RUN wget https://github.com/ctripcorp/apollo/releases/download/v1.8.1/apollo-portal-1.8.1-github.zip  && \
-unzip apollo-portal-1.8.1-github.zip && \
-rm -rf apollo-portal-1.8.1-github.zip && \
+ARG version=1.8.1
+ARG download=1.8.1-github
+
+RUN wget https://github.com/ctripcorp/apollo/releases/download/v$version/apollo-portal-$download.zip  && \
+unzip apollo-portal-$download.zip && \
+rm -rf apollo-portal-$download.zip && \
 cp hzj/conf/apollo-portal.properties config/application-github.properties && \
 cp hzj/conf/apollo-portal.conf apollo-portal.conf
 

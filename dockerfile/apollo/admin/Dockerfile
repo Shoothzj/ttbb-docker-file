@@ -6,9 +6,12 @@ WORKDIR /opt/sh/apollo-admin
 
 COPY source /opt/sh/apollo-admin/hzj
 
-RUN wget https://github.com/ctripcorp/apollo/releases/download/v1.8.1/apollo-adminservice-1.8.1-github.zip  && \
-unzip apollo-adminservice-1.8.1-github.zip && \
-rm -rf apollo-adminservice-1.8.1-github.zip && \
+ARG version=1.8.1
+ARG download=1.8.1-github
+
+RUN wget https://github.com/ctripcorp/apollo/releases/download/v$version/apollo-adminservice-$download.zip  && \
+unzip apollo-adminservice-$download.zip && \
+rm -rf apollo-adminservice-$download.zip && \
 cp hzj/conf/apollo-admin.properties config/application-github.properties && \
 cp hzj/conf/apollo-adminservice.conf apollo-adminservice.conf
 
