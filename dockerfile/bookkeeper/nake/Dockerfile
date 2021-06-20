@@ -1,6 +1,6 @@
 FROM ttbb/base:jdk8
 
-ARG version=4.13.0
+ARG version=4.14.0
 
 RUN wget https://downloads.apache.org/bookkeeper/bookkeeper-$version/bookkeeper-server-$version-bin.tar.gz  && \
 mkdir -p /opt/sh/bookkeeper && \

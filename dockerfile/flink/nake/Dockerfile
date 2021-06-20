@@ -1,8 +1,8 @@
 # ttbb/flink:nake
 FROM ttbb/base:jdk11
 
-ARG version=1.13.0
-ARG download=1.13.0-bin-scala_2.12
+ARG version=1.13.1
+ARG download=1.13.1-bin-scala_2.12
 
 RUN wget https://downloads.apache.org/flink/flink-$version/flink-$download.tgz  && \
 mkdir -p /opt/sh/flink && \

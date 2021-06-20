@@ -3,7 +3,7 @@ FROM ttbb/base
 
 WORKDIR /opt/sh
 
-ARG version=7.5.7
+ARG version=8.0.1
 
 RUN wget https://dl.grafana.com/oss/release/grafana-$version.linux-amd64.tar.gz && \
 mkdir grafana && \

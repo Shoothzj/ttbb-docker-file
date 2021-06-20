@@ -7,6 +7,7 @@ bash $DIR/../build-push.sh base ubuntu
 
 bash $DIR/../build-push.sh base erlang
 bash $DIR/../build-push.sh base go
+bash $DIR/../build-push.sh base go114
 bash $DIR/../build-push.sh base goc
 bash $DIR/../build-push.sh base jdk8
 bash $DIR/../build-push.sh base jdk11

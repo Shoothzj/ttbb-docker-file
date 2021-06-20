@@ -6,8 +6,8 @@ WORKDIR /opt/sh
 
 ENV PULSAR_HOME /opt/sh/pulsar
 
-ARG version=2.7.1
-ARG download=2.7.1-bin
+ARG version=2.8.0
+ARG download=2.8.0-bin
 
 RUN wget https://archive.apache.org/dist/pulsar/pulsar-$version/apache-pulsar-$download.tar.gz  && \
 mkdir -p /opt/sh/pulsar && \

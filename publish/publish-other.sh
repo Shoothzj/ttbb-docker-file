@@ -36,6 +36,9 @@ bash $DIR/../build-push.sh neo4j stand-alone
 bash $DIR/../build-push.sh node-exporter nake
 bash $DIR/../build-push.sh node-exporter stand-alone
 
+bash $DIR/../build-push.sh qpid nake
+bash $DIR/../build-push.sh qpid stand-alone
+
 bash $DIR/../build-push.sh rabbitmq nake
 bash $DIR/../build-push.sh rabbitmq stand-alone
 
