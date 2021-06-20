@@ -5,6 +5,8 @@ LABEL maintainer="shoothzj@gmail.com"
 
 WORKDIR /opt/sh
 
+ENV KAFKA_HOME /opt/sh/kafka
+
 ARG version=2.8.0
 
 RUN wget https://downloads.apache.org/kafka/$version/kafka_2.13-$version.tgz && \

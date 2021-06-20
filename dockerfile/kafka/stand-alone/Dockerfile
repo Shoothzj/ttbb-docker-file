@@ -10,6 +10,4 @@ COPY source /opt/sh/kafka/hzj
 
 WORKDIR /opt/sh/kafka
 
-ENV KAFKA_HOME /opt/sh/kafka
-
 CMD ["/usr/local/bin/dumb-init", "bash", "-vx","/opt/sh/kafka/hzj/scripts/start.sh"]
