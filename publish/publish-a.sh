@@ -1,3 +1,5 @@
+#!/bin/bash
+
 DIR="$( cd "$( dirname "$0"  )" && pwd  )"
 bash $DIR/publish-base.sh
 bash $DIR/publish-apollo.sh
@@ -17,6 +19,7 @@ bash $DIR/publish-grafana.sh
 bash $DIR/publish-hadoop.sh
 bash $DIR/publish-influxdb.sh
 bash $DIR/publish-integrate.sh
+bash $DIR/publish-kafka.sh
 bash $DIR/publish-kibana.sh
 bash $DIR/publish-kong.sh
 bash $DIR/publish-logstash.sh

@@ -9,10 +9,6 @@ bash $DIR/../build-push.sh grafana stand-alone
 
 bash $DIR/../build-push.sh hbase nake
 
-bash $DIR/../build-push.sh kafka nake
-bash $DIR/../build-push.sh kafka stand-alone
-bash $DIR/../build-push.sh kafka cluster
-
 bash $DIR/../build-push.sh kapacitor nake
 bash $DIR/../build-push.sh kapacitor stand-alone
 

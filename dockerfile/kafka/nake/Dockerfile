@@ -14,4 +14,6 @@ mkdir /opt/sh/kafka && \
 tar -xf /opt/sh/kafka_2.13-$version.tgz -C /opt/sh/kafka --strip-components 1 && \
 rm -rf kafka_2.13-$version.tgz
 
+COPY source /opt/sh/kafka/hzj
+
 WORKDIR /opt/sh/kafka
