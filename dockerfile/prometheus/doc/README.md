@@ -9,5 +9,7 @@ GLOBAL_SCRAPE_TIMEOUT: 10s
 ### 样例
 ZOOKEEPER_TYPE: static
 ZOOKEEPER_HOSTS: 127.0.0.1:6999
+ZOOKEEPER_METRICS_PATH: /another-metrics
 #### type的取值
 - static 静态，把静态的host添加到地址列表中
+- dns

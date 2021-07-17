@@ -1,4 +1,5 @@
 # docker run -d ttbb/kafka:stand-alone
+# docker run -p 9092:9092 ttbb/kafka:stand-alone
 # docker run -p 9092:9092 -d ttbb/kafka:stand-alone
 # docker run -p 9092:9092 -it ttbb/kafka:stand-alone bash
 # docker run -e KAFKA_ADVERTISE_ADDRESS=localhost -p 9092:9092 -d ttbb/kafka:stand-alone

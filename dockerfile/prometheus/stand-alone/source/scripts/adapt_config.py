@@ -24,6 +24,10 @@ def common_static(service, env_service_prefix, ssl_enable):
         file.write("\n")
         file.write('        refresh_interval: 10s')
         file.write("\n")
+        dns_metric_path = os.getenv(env_service_prefix + "_METRICS_PATH")
+        if dns_metric_path is not None:
+            file.write('    metrics_path: ' + dns_metric_path)
+            file.write("\n")
     hosts = os.getenv(env_service_prefix + "_HOSTS")
     host_array = hosts.split(',')
     one_target = {"targets": host_array}
@@ -57,6 +61,10 @@ def common_dns(service, env_service_prefix, port, ssl_enable):
         file.write("\n")
         file.write('        refresh_interval: 10s')
         file.write("\n")
+        dns_metric_path = os.getenv(env_service_prefix + "_METRICS_PATH")
+        if dns_metric_path is not None:
+            file.write('    metrics_path: ' + dns_metric_path)
+            file.write("\n")
 
 
 def common(service, env_service_prefix, port):

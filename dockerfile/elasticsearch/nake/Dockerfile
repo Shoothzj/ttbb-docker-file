@@ -6,7 +6,7 @@ LABEL maintainer="shoothzj@gmail.com"
 
 WORKDIR /opt/sh
 
-ARG version=7.13.2
+ARG version=7.13.3
 
 RUN wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-$version-linux-x86_64.tar.gz && \
 mkdir elasticsearch && \

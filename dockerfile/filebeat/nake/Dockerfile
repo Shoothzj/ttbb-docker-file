@@ -5,7 +5,7 @@ FROM ttbb/base
 
 LABEL maintainer="shoothzj@gmail.com"
 
-ARG download=7.13.2-linux-x86_64
+ARG download=7.13.3-linux-x86_64
 
 RUN wget https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-$download.tar.gz && \
 mkdir /opt/sh/filebeat && \

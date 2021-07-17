@@ -1,5 +1,5 @@
-DIR="$( cd "$( dirname "$0"  )" && pwd  )"
-PROM_HOME="$( cd "$DIR/../.." && pwd  )"
+#!/bin/bash
+
 PROM_CONFIG="$PROM_HOME/prometheus.yml"
 >$PROM_CONFIG
 echo "global:" >> $PROM_CONFIG

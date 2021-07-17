@@ -4,11 +4,13 @@ FROM ttbb/base
 
 WORKDIR /opt/sh
 
-ARG version=2.27.1
+ARG version=2.28.1
 
 RUN wget https://github.com/prometheus/prometheus/releases/download/v$version/prometheus-$version.linux-amd64.tar.gz  && \
 mkdir -p prometheus && \
 tar -xf prometheus-$version.linux-amd64.tar.gz -C prometheus --strip-components 1 && \
 rm -rf prometheus-$version.linux-amd64.tar.gz
+
+ENV PROM_HOME /opt/sh/prometheus
 
 WORKDIR /opt/sh/prometheus

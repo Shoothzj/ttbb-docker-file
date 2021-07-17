@@ -7,8 +7,8 @@ COPY --from=etcd /opt/sh/etcd/etcd /usr/bin/etcd
 COPY --from=etcd /opt/sh/etcd/etcdctl /usr/bin/etcdctl
 COPY --from=openresty /opt/sh/openresty /opt/sh/openresty
 
-ARG version=2.6
-ARG download=2.6-src
+ARG version=2.7
+ARG download=2.7-src
 
 # then openresty
 WORKDIR /opt/sh
